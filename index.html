@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="peeney.css">
+</head>
+<body>
+
+    <div class="window">
+        <h2>Main Content <a href="#" class="close">Close</a></h2>
+        <div class="content">
+            <div style="padding: 20px; color: black;">
+                <h1> AAAAAGGGHHHH......  </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" style="width: 1400px">
+        <h2>Main Content <a href="#" class="close">Close</a></h2>
+        <div class="content">
+            <div style="padding: 20px; color: black;">
+                <h1> AAAAAGGGHHHH......  </h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="dynamic-footer" class="footer-box">
+        <h3 id="footer-title">damn i need to leave my room...</h3>
+        <p id="footer-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate aspernatur eum, provident mollitia a ut quis, nesciunt nemo asperiores nisi delectus quas doloremque similique doloribus architecto animi maiores eius itaque.
+        </p>
+    </div>
+
+    <div class="window window-right">
+        <h2><div class="text"><span>Fentanyl Levels At Max</span></div> <a href="#" class="close">Close</a></h2>
+        <div class="content">
+            <div class="sidebar">
+                <details data-title="Tab 1" data-text="Text for the first tab.">
+                    <summary class="DetailsThing">CLICK ME</summary>
+                </details>
+                <hr>
+                <details data-title="Tab 2" data-text="Text for the second tab.">
+                    <summary class="DetailsThing">CLICK ME</summary>
+                </details>
+                <hr>
+                <details data-title="Tab 3" data-text="Text for the third tab.">
+                    <summary class="DetailsThing">CLICK ME</summary>
+                </details>
+                <hr>
+                <details data-title="Tab 4" data-text="Text for the fourth tab.">
+                    <summary class="DetailsThing">CLICK ME</summary>
+                </details>
+                <hr>
+                <details data-title="Tab 5" data-text="Text for the fifth tab.">
+                    <summary class="DetailsThing">CLICK ME</summary>
+                </details>
+                <hr>
+                <details data-title="Tab 6" data-text="Text for the sixth tab.">
+                    <summary class="DetailsThing">CLICK ME</summary>
+                </details>
+                <hr>
+                <details data-title="Tab 7" data-text="Text for the seventh tab.">
+                    <summary class="DetailsThing">CLICK ME</summary>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+        const allDetails = sidebar.querySelectorAll('details');
+        const footerTitle = document.getElementById('footer-title');
+        const footerText = document.getElementById('footer-text');
+        
+        allDetails.forEach((targetDetail) => {
+          targetDetail.addEventListener("click", () => {
+            const title = targetDetail.getAttribute('data-title');
+            const text = targetDetail.getAttribute('data-text');
+
+            if (title && text) {
+                footerTitle.textContent = title;
+                footerText.textContent = text;
+            }
+
+            allDetails.forEach((detail) => {
+              if (detail !== targetDetail) {
+                detail.removeAttribute("open");
+              }
+            });
+          });
+        });
+    </script>
+</body>
+</html>
