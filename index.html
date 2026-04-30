@@ -3,19 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <title>zwiebelsaft</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <style>
     @font-face { font-family: 'Franklin Gothic Medium'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/framdit.ttf); font-style: italic; }
     @font-face { font-family: 'Tahoma'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/tahoma.ttf); }
 
+   
 
 
-    .screen .taskbar .main-section .start-button::before {
-  background: url("logo.png") center/cover no-repeat;
+     @media (max-width: 900px) {
+  body {
+    background: #5a7edc;
+  }
+  .screen {
+    background-size: cover;
+    background-position: center;
+  }
+  .desktop-area {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100% - 30px);
+  }
+  .main-area {
+    width: 100%;
+  }
+  .window-box[style*="1400px"] {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .sidebar {
+    width: 100%;
+  }
+  .sidebar-area {
+    width: 100%;
+  }
+  .window-box {
+    max-width: 100%;
+  }
+}
+
+
+
+    @media (max-width: 900px) {
+  .desktop-area {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100% - 30px);
+  }
+  .main-area {
+    width: 100%;
+  }
+  .window-box[style*="1400px"] {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .sidebar {
+    width: 100%;
+  }
+  .sidebar-area {
+    width: 100%;
+  }
+  .window-box {
+    max-width: 100%;
+  }
 }
 
     
+    .screen .taskbar .main-section .start-button::before {
+  background: url("logo.png") center/cover no-repeat;
+     }
 
     #kitty-overlay {
       position: fixed;
@@ -229,10 +286,30 @@
         </div>
 
         <div class="window-box" style="width: 1400px">
-          <h2>something <a href="#" class="close">Close</a></h2>
+          <h2>Submit your School email here somewhere<a href="#" class="close">Close</a></h2>
           <div class="content">
             <div style="padding: 20px; color: black;">
-              <h1> AAAAAGGGHHHH......  </h1>
+              <form
+  action="https://formspree.io/f/maqvyoqp"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <br>
+  <br>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+   <br>
+    <br>
+     <br>
+
+  <button type="submit">Send</button>
+</form>
             </div>
           </div>
         </div>
@@ -250,10 +327,22 @@
           <h2><div class="text"><span>ContentSelector.py</span></div> <a href="#" class="close">Close</a></h2>
           <div class="content">
             <div class="sidebar">
-              <details data-title="Tab 1" data-text="Text for the first tab.">
-                <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
-              </details>
+<details data-title="Tab 1" data-text='
+<hr>
+<a href="https://ibb.co/BV6F4qG0"><img src="https://i.ibb.co/N6Nb1Zrc/IMG-20260429-204602.jpg" alt="IMG-20260429-204602" border="0" style="max-width:100%;"></a> 
+<hr>
+<a href="https://ibb.co/rKvcFkJX"><img src="https://i.ibb.co/HLXxB7Q9/IMG-20260429-204626.jpg" alt="IMG-20260429-204626" border="0" style="max-width:100%;"></a>
+<hr>
+<a href="https://ibb.co/SXmqSM4R"><img src="https://i.ibb.co/Rp6L8skz/IMG-20260429-204650.jpg" alt="IMG-20260429-204650" border="0" style="max-width:100%;"></a>
+<hr>
+<a href="https://ibb.co/nsfrpDs3"><img src="https://i.ibb.co/Z6Kd9h6H/IMG-20260429-204653.jpg" alt="IMG-20260429-204653" border="0" style="max-width:100%;"></a>
+<hr>
+<a href="https://ibb.co/XZ7rmch6"><img src="https://i.ibb.co/kg4sYNRz/IMG-20260429-205140.jpg" alt="IMG-20260429-205140" border="0" style="max-width:100%;"></a>
+<hr>
+<a href="https://ibb.co/nqCqYDs0"><img src="https://i.ibb.co/kV1Vwhgy/IMG-20260429-205155.jpg" alt="IMG-20260429-205155" border="0" style="max-width:100%;"></a>'>
+  <summary class="DetailsThing">COOL IMAGES</summary>
+  <h3>holy awsome images!</h3>
+</details>
               <hr>
               <details data-title="Tab 2" data-text="Text for the second tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
@@ -305,14 +394,14 @@
           </div>
           <div class="start-menu-body">
             <div class="start-menu-favorites">
-              <div class="start-menu-item intent-item" onclick="openWindow('Internet Explorer', 'Welcome to Internet Explorer')">
+              <div class="start-menu-item intent-item" onclick="openWindow('Internet Explorer', 'you really thought there would be an internet explorer here?')">
                 <div class="icon" style="background-image:url('ie.png')"></div>
                 <div class="label">
                   <div class="intent">Internet</div>
                   <div class="program">Internet Explorer</div>
                 </div>
               </div>
-              <div class="start-menu-item intent-item" onclick="openWindow('Outlook Express', 'Your emails will appear here')">
+              <div class="start-menu-item intent-item" onclick="openWindow('Outlook Express', 'Your emails will not appear here')">
                 <div class="icon" style="background-image:url('email.png')"></div>
                 <div class="label">
                   <div class="intent">E-mail</div>
@@ -320,9 +409,9 @@
                 </div>
               </div>
               <div class="divider"></div>
-              <div class="start-menu-item favorite-item" onclick="openWindow('Word', 'Microsoft Word')">
+              <div class="start-menu-item favorite-item" onclick="openWindow('Snake', 'No snake yet...')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/notepadicon.png')"></div>
-                <div class="label">Word</div>
+                <div class="label">Snake</div>
               </div>
               <div class="all-programs">
                 <div class="divider"></div>
@@ -330,32 +419,34 @@
               </div>
             </div>
             <div class="start-menu-shortcuts">
-              <div class="start-menu-item my-item" onclick="openWindow('My Computer', 'This is My Computer')">
+              <div class="start-menu-item my-item" onclick="openWindow('My Computer', 'This is My Computer, or is it Your computer?')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/235.ico')"></div>
                 <div class="label">My Computer</div>
               </div>
               <div class="divider"></div>
-              <div class="start-menu-item" onclick="openWindow('Control Panel', 'Control Panel settings')">
+              <div class="start-menu-item" onclick="openWindow('Control Panel', 'control deez nuts!')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/22.ico')"></div>
                 <div class="label">Control Panel</div>
               </div>
-              <div class="start-menu-item" onclick="openWindow('Printers and Faxes', 'Printer settings')">
+              <div class="start-menu-item" onclick="openWindow('Printers and Taxes', 'Printer settings or something.')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/138.ico')"></div>
                 <div class="label">Printers and Faxes</div>
               </div>
-              <div class="divider"></div>
-              <div class="start-menu-item" onclick="openWindow('Help and Support', 'How can we help?')">
-                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/24.ico')"></div>
-                <div class="label">Help and Support</div>
-              </div>
+               <div class="divider"></div>
+<div class="start-menu-item" onclick='openWindow("Join Guaza inovations Club TM", `<form action="https://formspree.io/f/maqvyoqp" method="POST">
+  <label>Your email: <br> <input type="email" name="email"></label>
+  <label>Your message: <br> <textarea name="message"></textarea></label>
+  <br>
+  <button type="submit">Send</button>
+</form>`)'>
+  <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/24.ico')"></div>
+  <div class="label">Join GIC</div>
+</div>
               <div class="start-menu-item" onclick="openWindow('Search', 'Search results')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/23.ico')"></div>
                 <div class="label">Search</div>
               </div>
-              <div class="start-menu-item" id="ie-trigger" onclick="openWindow('Internet Explorer', 'Welcome to Internet Explorer')">
-                <div class="icon" style="background-image:url('ie.png')"></div>
-                <div class="label">Internet Explorer</div>
-              </div>
+
             </div>
           </div>
           <div class="start-menu-footer">
@@ -366,6 +457,9 @@
     </div>
   </div>
 </div>
+
+<!-- from here the scripts had been made with Kimi AI -->
+
 
 <script>
   const sidebar = document.querySelector('.sidebar');
@@ -380,7 +474,7 @@
 
       if (title && text) {
         footerTitle.textContent = title;
-        footerText.textContent = text;
+        footerText.innerHTML = text;
       }
 
       allDetails.forEach((detail) => {
