@@ -1,98 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="HTML, cool, Jewish-Japanese Sex, Cook Book ,How to Raise Wolves , awesome">
-    <meta name="author" content="Alex">
-    <title>zwiebelsaft</title>
-    <link rel="stylesheet" href="peeney.css">
+  <meta charset="UTF-8">
+  <title>zwiebelsaft</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <style>
+    @font-face { font-family: 'Franklin Gothic Medium'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/framdit.ttf); font-style: italic; }
+    @font-face { font-family: 'Tahoma'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/tahoma.ttf); }
+
+    #kitty-overlay {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      display: none;
+      pointer-events: none;
+    }
+
+    .spin-animation {
+      animation: spinAndGrow 3s forwards linear;
+    }
+
+    @keyframes spinAndGrow {
+      0% { transform: translate(-50%, -50%) rotate(0deg) scale(0); opacity: 1; }
+      80% { transform: translate(-50%, -50%) rotate(1080deg) scale(50); opacity: 1; }
+      100% { transform: translate(-50%, -50%) rotate(1440deg) scale(100); opacity: 0; }
+    }
+
+    .desktop-area {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 30px);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      gap: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    .main-area {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+      flex: 1;
+      min-width: 0;
+      align-content: flex-start;
+    }
+
+    .sidebar-area {
+      flex: 0 0 auto;
+    }
+
+    .window-box {
+      width: fit-content;
+      min-width: 300px;
+      height: auto;
+      border: 1px solid black;
+      border-radius: 5px 5px 0 0;
+      display: flex;
+      flex-direction: column;
+      border-color: #0072ef #01279e #01279e #0236d8;
+      background:
+        linear-gradient(to right, #034fe1, #1682f2 1px, #006ee4 2px, rgba(0,0,0,0) 3px),
+        linear-gradient(to left, #0034b0, #0056e1 1px, #0064f4 2px, rgba(0,0,0,0) 3px),
+        linear-gradient(to top, #0034b1, #0056e1 1px, #0064f4 2px, rgba(0,0,0,0) 3px);
+    }
+
+    .window-box * {
+      cursor: default;
+    }
+
+    .window-box h2 {
+      line-height: 32px;
+      height: 30px;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      border-radius: 3px 3px 0 0;
+      background: #006fea;
+      background-image:
+        linear-gradient(to right, #0050db, rgba(255,255,255,.1) 4px, rgba(255,255,255,0) 200px),
+        linear-gradient(to left, #0034b0, #0056e1 1px, #0064f4 2px, rgba(0,0,0,0) 3px),
+        linear-gradient(to bottom, #4aa9ff, #33a4ff 1px, #008aff 2px, #007ef4 3px, #0075f0 4px, rgba(0,0,0,0) 5px),
+        linear-gradient(to top, #005dd9, #0067e9 1px, #007afb 2px, #0081fb 3px, rgba(0,0,0,0) 4px);
+      font-family: sans-serif;
+      color: white;
+      font-weight: normal;
+      font-size: 14px;
+      padding-left: 8px;
+      text-shadow: 1px 1px 0 #0a2a95;
+      white-space: nowrap;
+    }
+
+    .window-box .content {
+      flex: 1;
+      border: 1px solid #91adc6;
+      margin: 0 2px 2px;
+      background: white;
+    }
+
+    .window-box .close {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      height: 19px;
+      padding-left: 19px;
+      width: 0;
+      overflow: hidden;
+      border: 1px solid white;
+      border-radius: 3px;
+      background:
+        radial-gradient(circle at 20px 20px, #e84f00, rgba(255,255,255,0)),
+        radial-gradient(circle at -5px -5px, white, rgba(255,255,255,.3), rgba(255,255,255,0)),
+        linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0)),
+        linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0));
+      background-color: #e81000;
+    }
+
+    .window-box .close:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border: 1px solid rgba(33, 0, 0, 0.2);
+      border-radius: 2px;
+    }
+
+    .window-box .close:before {
+      content: "×";
+      position: absolute;
+      left: 2.5px;
+      top: -7px;
+      color: white;
+      text-shadow: none;
+      font-size: 23px;
+    }
+
+    .sidebar {
+      width: 500px;
+      height: auto;
+      background: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 13px;
+      color: white;
+      box-sizing: border-box;
+    }
+
+    .sidebar details {
+      width: 100%;
+    }
+
+    .sidebar summary {
+      cursor: pointer;
+      padding: 10px 0;
+      list-style: none;
+    }
+
+    .sidebar hr {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #555;
+      margin: 0;
+    }
+
+    .DetailsThing {
+      font-size: 20px;
+    }
+
+    .footer-box {
+      width: 100%;
+      height: auto;
+      background-color: #ffffff;
+      border: 1px solid #91adc6;
+      border-radius: 8px;
+      padding: 15px;
+      box-sizing: border-box;
+      color: #333;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #ie-trigger {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="window">
-        <h2>Main Content <a href="#" class="close">Close</a></h2>
-        <div class="content">
-            <div style="padding: 20px; color: black;">
-                <h1> AAAAAGGGHHHH......  </h1>
-            </div>
-        </div>
-    </div>
+<img id="kitty-overlay" src="https://i.ibb.co/5XWHxs2C/CUTEKITTY.jpg" alt="Spinning Kitty">
 
-    <div class="window" style="width: 1400px">
-        <h2>Main Content <a href="#" class="close">Close</a></h2>
-        <div class="content">
-            <div style="padding: 20px; color: black;">
-                <h1> AAAAAGGGHHHH......  </h1>
-            </div>
-        </div>
-    </div>
+<div id="windows-container"></div>
 
-    <div id="dynamic-footer" class="footer-box">
-        <h3 id="footer-title">damn i need to leave my room...</h3>
-        <p id="footer-text">
+<div class="container">
+  <div class="screen">
+
+    <div class="desktop-area">
+      <div class="main-area">
+        <div class="window-box">
+          <h2>Logo.jpg<a href="#" class="close">Close</a></h2>
+          <div class="content">
+            <div style="padding: 20px; color: black;">
+              <a href="https://ibb.co/B2sh9CTz">
+                <img src="https://i.ibb.co/XxJnqCF2/Screenshot-20260430-162504.png" alt="Screenshot-20260430-162504" border="0">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="window-box" style="width: 1400px">
+          <h2>something <a href="#" class="close">Close</a></h2>
+          <div class="content">
+            <div style="padding: 20px; color: black;">
+              <h1> AAAAAGGGHHHH......  </h1>
+            </div>
+          </div>
+        </div>
+
+        <div id="dynamic-footer" class="footer-box">
+          <h3 id="footer-title">damn i need to leave my room...</h3>
+          <p id="footer-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate aspernatur eum, provident mollitia a ut quis, nesciunt nemo asperiores nisi delectus quas doloremque similique doloribus architecto animi maiores eius itaque.
-        </p>
-    </div>
-
-    <div class="window window-right">
-        <h2><div class="text"><span>Fentanyl Levels At Max</span></div> <a href="#" class="close">Close</a></h2>
-        <div class="content">
-            <div class="sidebar">
-                <details data-title="Tab 1" data-text="Text for the first tab.">
-                    <summary class="DetailsThing">CLICK ME</summary>
-                </details>
-                <hr>
-                <details data-title="Tab 2" data-text="Text for the second tab.">
-                    <summary class="DetailsThing">CLICK ME</summary>
-                </details>
-                <hr>
-                <details data-title="Tab 3" data-text="Text for the third tab.">
-                    <summary class="DetailsThing">CLICK ME</summary>
-                </details>
-                <hr>
-                <details data-title="Tab 4" data-text="Text for the fourth tab.">
-                    <summary class="DetailsThing">CLICK ME</summary>
-                </details>
-                <hr>
-                <details data-title="Tab 5" data-text="Text for the fifth tab.">
-                    <summary class="DetailsThing">CLICK ME</summary>
-                </details>
-                <hr>
-                <details data-title="Tab 6" data-text="Text for the sixth tab.">
-                    <summary class="DetailsThing">CLICK ME</summary>
-                </details>
-                <hr>
-                <details data-title="Tab 7" data-text="Text for the seventh tab.">
-                    <summary class="DetailsThing">CLICK ME</summary>
-                </details>
-            </div>
+          </p>
         </div>
+      </div>
+
+      <div class="sidebar-area">
+        <div class="window-box">
+          <h2><div class="text"><span>ContentSelector.py</span></div> <a href="#" class="close">Close</a></h2>
+          <div class="content">
+            <div class="sidebar">
+              <details data-title="Tab 1" data-text="Text for the first tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+              <hr>
+              <details data-title="Tab 2" data-text="Text for the second tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+              <hr>
+              <details data-title="Tab 3" data-text="Text for the third tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+              <hr>
+              <details data-title="Tab 4" data-text="Text for the fourth tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+              <hr>
+              <details data-title="Tab 5" data-text="Text for the fifth tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+              <hr>
+              <details data-title="Tab 6" data-text="Text for the sixth tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+              <hr>
+              <details data-title="Tab 7" data-text="Text for the seventh tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        const sidebar = document.querySelector('.sidebar');
-        const allDetails = sidebar.querySelectorAll('details');
-        const footerTitle = document.getElementById('footer-title');
-        const footerText = document.getElementById('footer-text');
-        
-        allDetails.forEach((targetDetail) => {
-          targetDetail.addEventListener("click", () => {
-            const title = targetDetail.getAttribute('data-title');
-            const text = targetDetail.getAttribute('data-text');
+    <div class="taskbar">
+      <div class="main-section">
+        <input id="start-menu-active" type="checkbox">
+        <label class="start-button" for="start-menu-active">
+          start
+        </label>
+        <div class="start-menu">
+          <div class="start-menu-header">
+            <div class="account-image-wrapper">
+              <img src="red flower.jpg" height="48px" width="48px">
+            </div>
+            <h1 class="account-name">Administrator</h1>
+          </div>
+          <div class="start-menu-body">
+            <div class="start-menu-favorites">
+              <div class="start-menu-item intent-item" onclick="openWindow('Internet Explorer', 'Welcome to Internet Explorer')">
+                <div class="icon" style="background-image:url('ie.png')"></div>
+                <div class="label">
+                  <div class="intent">Internet</div>
+                  <div class="program">Internet Explorer</div>
+                </div>
+              </div>
+              <div class="start-menu-item intent-item" onclick="openWindow('Outlook Express', 'Your emails will appear here')">
+                <div class="icon" style="background-image:url('email.png')"></div>
+                <div class="label">
+                  <div class="intent">E-mail</div>
+                  <div class="program">Outlook Express</div>
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="start-menu-item favorite-item" onclick="openWindow('Word', 'Microsoft Word')">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/notepadicon.png')"></div>
+                <div class="label">Word</div>
+              </div>
+              <div class="all-programs">
+                <div class="divider"></div>
+                <div class="start-menu-item all-programs-button">All Programs</div>
+              </div>
+            </div>
+            <div class="start-menu-shortcuts">
+              <div class="start-menu-item my-item" onclick="openWindow('My Computer', 'This is My Computer')">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/235.ico')"></div>
+                <div class="label">My Computer</div>
+              </div>
+              <div class="divider"></div>
+              <div class="start-menu-item" onclick="openWindow('Control Panel', 'Control Panel settings')">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/22.ico')"></div>
+                <div class="label">Control Panel</div>
+              </div>
+              <div class="start-menu-item" onclick="openWindow('Printers and Faxes', 'Printer settings')">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/138.ico')"></div>
+                <div class="label">Printers and Faxes</div>
+              </div>
+              <div class="divider"></div>
+              <div class="start-menu-item" onclick="openWindow('Help and Support', 'How can we help?')">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/24.ico')"></div>
+                <div class="label">Help and Support</div>
+              </div>
+              <div class="start-menu-item" onclick="openWindow('Search', 'Search results')">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/23.ico')"></div>
+                <div class="label">Search</div>
+              </div>
+              <div class="start-menu-item" id="ie-trigger" onclick="openWindow('Internet Explorer', 'Welcome to Internet Explorer')">
+                <div class="icon" style="background-image:url('ie.png')"></div>
+                <div class="label">Internet Explorer</div>
+              </div>
+            </div>
+          </div>
+          <div class="start-menu-footer">
+          </div>
+        </div>
+      </div>
+      <div class="quick-section"></div>
+    </div>
+  </div>
+</div>
 
-            if (title && text) {
-                footerTitle.textContent = title;
-                footerText.textContent = text;
-            }
+<script>
+  const sidebar = document.querySelector('.sidebar');
+  const allDetails = sidebar.querySelectorAll('details');
+  const footerTitle = document.getElementById('footer-title');
+  const footerText = document.getElementById('footer-text');
 
-            allDetails.forEach((detail) => {
-              if (detail !== targetDetail) {
-                detail.removeAttribute("open");
-              }
-            });
-          });
+  allDetails.forEach((targetDetail) => {
+    targetDetail.addEventListener("click", () => {
+      const title = targetDetail.getAttribute('data-title');
+      const text = targetDetail.getAttribute('data-text');
+
+      if (title && text) {
+        footerTitle.textContent = title;
+        footerText.textContent = text;
+      }
+
+      allDetails.forEach((detail) => {
+        if (detail !== targetDetail) {
+          detail.removeAttribute("open");
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+$(document).ready(function() {
+
+  $('.screen').click(function(e){
+    if($(e.target).hasClass('screen') || $(e.target).hasClass('desktop-area')) {
+      $('#start-menu-active').prop('checked', false);
+    }
+  });
+
+  $("#ie-trigger").on("click", function() {
+    const $kitty = $("#kitty-overlay");
+    $kitty.css("animation-duration", "100s").show().addClass("spin-animation");
+    setTimeout(() => {
+      $kitty.hide().removeClass("spin-animation");
+    }, 10000);
+  });
+
+  function updateClock() {
+    var now = new Date();
+  }
+  var oneMinute = 1000 * 60;
+  var now = new Date();
+  var timeUntilMinuteTick =
+      oneMinute -
+      (now.getSeconds() * 1000 + now.getMilliseconds());
+  setTimeout(function(){
+    updateClock();
+    setInterval(updateClock, oneMinute);
+  }, timeUntilMinuteTick);
+  updateClock();
+
+  $(window).resize(function(){
+    $('.screen').css('width', '120vh');
+    $('.screen').css('height', '90vh');
+
+    if($('.screen').width() >= $('.container').width()) {
+      $('.screen').css('width', $('.container').width() + 'px');
+      $('.screen').css('height', ($('.container').width() / 4 * 3) + 'px');
+    }
+  });
+
+  var mouseIsDown = false,
+      offsetX = 10,
+      offsetY = 10,
+      resizeDir = false,
+      minWidth = 200,
+      minHeight = 200,
+      activeWindow = null;
+
+  $(document).on("mousedown", ".title-bar, .resize-s, .resize-se, .resize-e, .resize-w, .resize-n, .resize-sw, .resize-nw, .resize-ne", function(e) {
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
+    mouseIsDown = true;
+    resizeDir = $(e.target).attr("class");
+    activeWindow = $(e.target).closest(".window");
+  });
+
+  $(window).mouseup(function(e) {
+    mouseIsDown = false;
+  });
+
+  $(window).mousemove(function(e) {
+    if (mouseIsDown && activeWindow) {
+      var newWidth, newHeight, newX, newY;
+      if (resizeDir === "title-bar") {
+        activeWindow.css({
+          left: e.pageX - offsetX,
+          top: e.pageY - offsetY
         });
-    </script>
+      } else if (resizeDir === "resize-e") {
+        newWidth = e.pageX - activeWindow.offset().left
+        if (newWidth <= minWidth) {
+          newWidth = 200;
+        }
+      } else if (resizeDir === "resize-w") {
+        newX = activeWindow.offset().left - (activeWindow.offset().left - e.pageX)
+        newWidth = activeWindow.width() + activeWindow.offset().left - e.pageX;
+        if (newWidth <= minWidth) {
+          newWidth = 200;
+          newX = activeWindow.offset().left;
+        }
+      } else if (resizeDir === "resize-n") {
+        newY = activeWindow.offset().top - (activeWindow.offset().top - e.pageY);
+        newHeight = activeWindow.height() + activeWindow.offset().top - e.pageY;
+        if (newHeight <= minHeight) {
+          newHeight = 200;
+          newY = activeWindow.offset().top;
+        }
+      } else if (resizeDir === "resize-nw") {
+        newY = activeWindow.offset().top - (activeWindow.offset().top - e.pageY);
+        newHeight = activeWindow.height() + activeWindow.offset().top - e.pageY;
+        if (newHeight <= minHeight) {
+          newHeight = 200;
+          newY = activeWindow.offset().top;
+        };
+        newX = activeWindow.offset().left - (activeWindow.offset().left - e.pageX)
+        newWidth = activeWindow.width() + activeWindow.offset().left - e.pageX;
+        if (newWidth <= minWidth) {
+          newWidth = 200;
+          newX = activeWindow.offset().left;
+        }
+      } else if (resizeDir === "resize-ne") {
+        newY = activeWindow.offset().top - (activeWindow.offset().top - e.pageY);
+        newHeight = activeWindow.height() + activeWindow.offset().top - e.pageY;
+        if (newHeight <= minHeight) {
+          newHeight = 200;
+          newY = activeWindow.offset().top;
+        };
+        newWidth = e.pageX - activeWindow.offset().left
+        if (newWidth <= minWidth) {
+          newWidth = 200;
+        }
+      } else if (resizeDir === "resize-s") {
+        newHeight = e.pageY - activeWindow.offset().top
+        if (newHeight <= minHeight) {
+          newHeight = 200;
+        }
+      } else if (resizeDir === "resize-se") {
+        newHeight = e.pageY - activeWindow.offset().top
+        if (newHeight <= minHeight) {
+          newHeight = 200;
+        }
+        newWidth = e.pageX - activeWindow.offset().left
+        if (newWidth <= minWidth) {
+          newWidth = 200;
+        }
+      } else if (resizeDir === "resize-sw") {
+        newHeight = e.pageY - activeWindow.offset().top
+        if (newHeight <= minHeight) {
+          newHeight = 200;
+        }
+        newX = activeWindow.offset().left - (activeWindow.offset().left - e.pageX)
+        newWidth = activeWindow.width() + activeWindow.offset().left - e.pageX;
+        if (newWidth <= minWidth) {
+          newWidth = 200;
+          newX = activeWindow.offset().left;
+        }
+      }
+      activeWindow.find(".resize-e, .resize-w").css({
+        height: activeWindow.height() - 10
+      });
+      activeWindow.find(".resize-s, .resize-n").css({
+        width: activeWindow.width() - 10
+      });
+      activeWindow.css({
+        width: newWidth,
+        height: newHeight,
+        left: newX,
+        top: newY
+      });
+      activeWindow.find(".title-bar").css({
+        width: newWidth
+      });
+      activeWindow.find(".content").css({
+        width: newWidth - 4,
+        height: newHeight - 35
+      });
+    }
+  });
+});
+
+function openWindow(title, content) {
+  const id = 'win-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5);
+  const html = `
+    <div class="window" id="${id}" style="display:block;top:15%;left:35%;">
+      <div class="title-bar">
+        <div class="title-bar-title">${title}</div>
+        <div class="title-bar-close" onclick="$('#${id}').remove()"></div>
+        <div class="title-bar-max"></div>
+        <div class="title-bar-min"></div>
+      </div>
+      <div class="content">${content}</div>
+      <div class="resize-n"></div>
+      <div class="resize-e"></div>
+      <div class="resize-s"></div>
+      <div class="resize-w"></div>
+      <div class="resize-ne"></div>
+      <div class="resize-nw"></div>
+      <div class="resize-se"></div>
+      <div class="resize-sw"></div>
+    </div>
+  `;
+  $('#windows-container').append(html);
+}
+</script>
+
 </body>
 </html>
