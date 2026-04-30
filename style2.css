@@ -1,6 +1,7 @@
+/* expect that most of this is made with AI, i will be replacing everything with my own written code however id like to see how things i want to do are written */
 .screen {
   position: relative;
-  background: url("../images/windows_xp_bliss.jpg") center/cover no-repeat #0c8dea;
+  background: url("windows_xp_bliss.jpg") center/cover no-repeat #0c8dea;
 }
 .screen .taskbar {
   position: absolute;
@@ -436,3 +437,5 @@ body{
 	bottom:3px;
 	background-color:white;
 }
+
+/* have a good day stranger! */
