@@ -327,22 +327,11 @@
           <h2><div class="text"><span>ContentSelector.py</span></div> <a href="#" class="close">Close</a></h2>
           <div class="content">
             <div class="sidebar">
-<details data-title="Tab 1" data-text='
-<hr>
-<a href="https://ibb.co/BV6F4qG0"><img src="https://i.ibb.co/N6Nb1Zrc/IMG-20260429-204602.jpg" alt="IMG-20260429-204602" border="0" style="max-width:100%;"></a> 
-<hr>
-<a href="https://ibb.co/rKvcFkJX"><img src="https://i.ibb.co/HLXxB7Q9/IMG-20260429-204626.jpg" alt="IMG-20260429-204626" border="0" style="max-width:100%;"></a>
-<hr>
-<a href="https://ibb.co/SXmqSM4R"><img src="https://i.ibb.co/Rp6L8skz/IMG-20260429-204650.jpg" alt="IMG-20260429-204650" border="0" style="max-width:100%;"></a>
-<hr>
-<a href="https://ibb.co/nsfrpDs3"><img src="https://i.ibb.co/Z6Kd9h6H/IMG-20260429-204653.jpg" alt="IMG-20260429-204653" border="0" style="max-width:100%;"></a>
-<hr>
-<a href="https://ibb.co/XZ7rmch6"><img src="https://i.ibb.co/kg4sYNRz/IMG-20260429-205140.jpg" alt="IMG-20260429-205140" border="0" style="max-width:100%;"></a>
-<hr>
-<a href="https://ibb.co/nqCqYDs0"><img src="https://i.ibb.co/kV1Vwhgy/IMG-20260429-205155.jpg" alt="IMG-20260429-205155" border="0" style="max-width:100%;"></a>'>
-  <summary class="DetailsThing">COOL IMAGES</summary>
-  <h3>holy awsome images!</h3>
-</details>
+              <details data-title="Tab 1" data-text="Text for the first tab.">
+                <summary class="DetailsThing">CLICK ME</summary>
+                <h3> TEXT WOW</h3>
+              </details>
+              <hr>
               <hr>
               <details data-title="Tab 2" data-text="Text for the second tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
@@ -394,13 +383,20 @@
           </div>
           <div class="start-menu-body">
             <div class="start-menu-favorites">
-              <div class="start-menu-item intent-item" onclick="openWindow('Internet Explorer', 'you really thought there would be an internet explorer here?')">
-                <div class="icon" style="background-image:url('ie.png')"></div>
-                <div class="label">
-                  <div class="intent">Internet</div>
-                  <div class="program">Internet Explorer</div>
-                </div>
-              </div>
+   
+
+
+
+              <div class="start-menu-item intent-item" onclick="openWindow('Internet Explorer', 'you really thought there would be an internet explorer here?'); $('#kitty-overlay').css('animation-duration', '3s').show().addClass('spin-animation'); setTimeout(() => { $('#kitty-overlay').hide().removeClass('spin-animation'); }, 3000);">
+  <div class="icon" style="background-image:url('ie.png')"></div>
+  <div class="label">
+    <div class="intent">Internet</div>
+    <div class="program">Internet Explorer</div>
+  </div>
+</div>
+
+
+
               <div class="start-menu-item intent-item" onclick="openWindow('Outlook Express', 'Your emails will not appear here')">
                 <div class="icon" style="background-image:url('email.png')"></div>
                 <div class="label">
@@ -409,10 +405,10 @@
                 </div>
               </div>
               <div class="divider"></div>
-              <div class="start-menu-item favorite-item" onclick="openWindow('Snake', 'No snake yet...')">
-                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/notepadicon.png')"></div>
-                <div class="label">Snake</div>
-              </div>
+<div class="start-menu-item favorite-item" onclick="openWindow('Photos', '&lt;div style=\'max-height:400px; overflow-y:auto; padding:10px;\'&gt;&lt;img src=\'https://i.ibb.co/N6Nb1Zrc/IMG-20260429-204602.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/HLXxB7Q9/IMG-20260429-204626.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/Rp6L8skz/IMG-20260429-204650.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/Z6Kd9h6H/IMG-20260429-204653.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/kg4sYNRz/IMG-20260429-205140.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/kV1Vwhgy/IMG-20260429-205155.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;/div&gt;')">
+  <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/notepadicon.png')"></div>
+  <div class="label">Photos</div>
+</div>
               <div class="all-programs">
                 <div class="divider"></div>
                 <div class="start-menu-item all-programs-button">All Programs</div>
