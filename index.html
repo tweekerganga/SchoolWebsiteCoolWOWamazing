@@ -3,504 +3,425 @@
 <head>
   <meta charset="UTF-8">
   <title>zwiebelsaft</title>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <style>
-
-.screen {
-  position: relative;
-  background: url("windows_xp_bliss.jpg") center/cover no-repeat #0c8dea;
-  width: 100%;
-  height: 100%;
-}
-.screen .taskbar {
-  position: absolute;
-  display: flex;
-  z-index: 100;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-.screen .taskbar .main-section {
-  height: 100%;
-  flex-grow: 1;
-  background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #333 100%) center/cover no-repeat;
-}
-.screen .taskbar .main-section .start-button {
-  position: relative;
-  display: inline-block;
-  font-size: 18px;
-  color: white;
-  font-style: italic;
-  padding: 5px 25px 5px 15px;
-  text-shadow: 1px 1px 1px #333;
-  border-radius: 0px 10px 15px 0px;
-  border: none;
-  transform: skewX(-3deg);
-  left: -5px;
-  box-shadow: 0px 5px 10px #79ce71 inset;
-  background: radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat;
-}
-.screen .taskbar .main-section .start-button::before {
-  content: '';
-  background: url("logo.png") center/cover no-repeat;
-  position: relative;
-  display: inline-block;
-  height: 15px;
-  width: 15px;
-  top: 1px;
-  transform: skewX(3deg);
-  -webkit-filter: drop-shadow(1px 1px 1px #333);
-}
-.screen .taskbar .main-section .start-menu {
-  display: none;
-  position: absolute;
-  background-color: #0c8dea;
-  width: 380px;
-  height: 550px;
-  left: 0%;
-  bottom: 100%;
-  z-index: -50;
-  border-radius: 5px 5px 0px 0px;
-  box-shadow: 2px 6px 10px #333, -2px 0px 5px rgba(20, 20, 20, 0.6) inset, 2px 0px 3px #7fbce8 inset;
-  overflow: hidden;
-}
-.screen .taskbar .main-section .start-menu .start-menu-header {
-  display: flex;
-  align-items: center;
-  height: 65px;
-  box-shadow: 3px 2px 3px #7fbce8 inset;
-  background: linear-gradient(to bottom, #245edb 0%, #0c8dea 100%);
-  padding: 8px 0px 7px 8px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-header .account-image-wrapper {
-  background-color: white;
-  border-radius: 5px;
-  padding: 2px;
-  height: 52px;
-  display: inline-block;
-  box-shadow: 2px 2px 4px #333;
-}
-.screen .taskbar .main-section .start-menu .start-menu-header .account-name {
-  display: inline-block;
-  margin: 0;
-  color: white;
-  font-size: 18px;
-  font-weight: normal;
-  margin-left: 10px;
-  text-shadow: 0px 0px 3px #555;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body {
-  position: relative;
-  display: flex;
-  height: calc(100% - 65px - 43px);
-  background-color: white;
-  border: 1px solid #0c8dea;
-  margin: 0 1px;
-  overflow: hidden;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body::before {
-  content: '';
-  position: absolute;
-  top: -7.5px;
-  left: 10%;
-  width: 80%;
-  height: 5px;
-  border-radius: 50%;
-  box-shadow: 0px 4px 5px #e88f0b;
-  z-index: 10;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  font-size: 11px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item > * {
-  display: inline-block;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .icon {
-  height: 30px;
-  width: 30px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .label {
-  margin-left: 5px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .label .intent {
-  font-weight: bold;
-  color: #373738;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .label .program {
-  color: gray;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item:hover {
-  background-color: #3d64bd;
-  color: white;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item:hover .label {
-  color: white;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .divider {
-  margin: 5px 0px;
-  height: 1px;
-  background: linear-gradient(to right, white 0%, #d3d3c8 50%, white 100%) center/cover no-repeat;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites {
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  height: 100%;
-  width: 50%;
-  padding: 8px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item .label .intent {
-  font-weight: bold;
-  color: #373738;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item .label .program {
-  color: gray;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item:hover .label .intent,
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item:hover .label .program {
-  color: inherit;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.favorite-item .label {
-  color: #373738;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.favorite-item:hover .label {
-  color: white;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0px 8px 8px 8px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs .start-menu-item.all-programs-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: bold;
-  color: #373738;
-  padding: 5px 0px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs .start-menu-item.all-programs-button::after {
-  content: '';
-  background: url("../images/startarrow.png") center/contain no-repeat;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-left: 5px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs .start-menu-item.all-programs-button:hover {
-  color: white;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts {
-  display: inline-flex;
-  flex-direction: column;
-  height: 100%;
-  width: 50%;
-  padding: 8px;
-  background: #d3e5fa;
-  border-left: 1px solid #95bdee;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item .icon {
-  width: 25px;
-  height: 25px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item .label {
-  color: #29356c;
-  font-size: 10px;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item:hover .label {
-  color: white;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item.my-item .label {
-  font-weight: bold;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item.my-item:hover .label {
-  color: white;
-}
-.screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .divider {
-  background: linear-gradient(to right, transparent 0%, #aebad6 50%, transparent 100%) center/cover no-repeat;
-}
-.screen .taskbar .main-section .start-menu .start-menu-footer {
-  height: 43px;
-  background: linear-gradient(to top, #245edb 0%, #0c8dea 100%);
-  box-shadow: -2px -2px 5px rgba(20, 20, 20, 0.6) inset;
-}
-.screen .taskbar .main-section #start-menu-active {
-  display: none;
-}
-.screen .taskbar .main-section #start-menu-active:checked ~ .start-button {
-  box-shadow: 0px 0px 15px #333 inset;
-}
-.screen .taskbar .main-section #start-menu-active:checked ~ .start-menu {
-  display: block;
-}
-
-.container {
-  height: 100%;
-  text-align: center;
-  position: relative;
-  z-index:0;
-}
-.container .screen {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: left;
-  line-height: normal;
-}
-
-* {
-  box-sizing: border-box;
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: default;
-}
-
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  font-family: verdana;
-  overflow: hidden; 
-}
-
-.window{
-    position:absolute;
-    width:500px;
-    height:500px;
-    background-color:#091E89;
-    overflow:hidden;
-    border-radius:7px 7px 0 0;
-    z-index: 100;
-    top: 10%;
-    left: 40%;
-    display: none;
-        box-sizing: border-box; 
-        min-width: 200px; 
-}
-.resize-e, .resize-w{
-    position:absolute;
-    width:10px;
-    height:190px;
-    top:5px;
-
-}
-.resize-w{
-    left:-5px;
-    cursor: w-resize;
-}
-.resize-e{
-    right:-5px;
-    cursor: e-resize;
-}
-
-.resize-n,.resize-s{
-    position:absolute;
-    width:200px - 10px;
-    height:10px;
-    left:5px;
-
-}
-.resize-s{
-    bottom:-5px;
-    cursor:s-resize;
-}
-.resize-n{
-    top:-5px;
-    cursor:n-resize;
-}
-
-.resize-ne,.resize-nw,.resize-se,.resize-sw{
-    position: absolute;
-    width:10px;
-    height:10px;
-}
-.resize-ne
-{
-    cursor:ne-resize;
-}
-.resize-sw{
-    cursor:sw-resize;
-}
-.resize-nw
-{
-    cursor:nw-resize;
-}
-.resize-se{
-    cursor:se-resize;
-}
-.resize-nw,.resize-ne
-{
-    top:-5px;
-}
-.resize-ne,.resize-se{
-    right:0px;
-}
-.resize-sw,.resize-se
-{
-    bottom:-5px;
-}
-.title-bar{
-    width:500px;
-    height:35px;
-    background: linear-gradient(to bottom, #4094ff 0%,#0056e4 13%,#0056e4 71%,#16428b 100%);
-        box-sizing: border-box;
-}
-.title-bar .title-bar-title{
-    position:absolute;
-    top:7.5px;
-    left:7.5px;
-    color:white;
-    text-shadow: 1px 1px #10397E;
-    font-size:15px;
-        pointer-events: none; 
-}
-.title-bar .title-bar-close,.title-bar .title-bar-max, .title-bar .title-bar-min{
-    position: absolute;
-    width:20px;
-    height:20px;
-    top:5px;
-    right:5px;
-    border-radius:2px;
-    border:1px solid white;
-        cursor: pointer;
-        pointer-events: auto; 
-}
-.title-bar .title-bar-close{
-    background: linear-gradient(135deg, #F1A689 0%,#C0442A 50%,#C2311E 100%); 
-}
-.title-bar-close:before,.title-bar-close:after{
-    content:'';
-    position:absolute;
-    width:14px;
-    height:2px;
-    background-color:white;
-    border-radius:2px;
-    top:9px;
-    box-shadow:0 0 2px 0 #ccc;
-}
-.title-bar-close:before{
-    -webkit-transform:rotate(45deg);
-    -moz-transform:rotate(45deg);
-    transform:rotate(45deg);
-    left:3px;
-}
-.title-bar-close:after{
-    -webkit-transform:rotate(-45deg);
-    -moz-transform:rotate(-45deg);
-    transform:rotate(-45deg);
-    right:3px;
-}
-
-.title-bar .title-bar-max, .title-bar .title-bar-min{
-    background: linear-gradient(135deg, #7EAED6 0%,#1B72FF 50%,#1655BE 100%); 
-}
-.title-bar .title-bar-max
-{
-    right:30px;
-}
-.title-bar .title-bar-min
-{
-    right:55px;
-}
-
-.title-bar-max:after,.title-bar-min:after{
-    content:'';
-    position:absolute;
-    box-shadow:0 0 0px 0 #ccc;
-}
-.title-bar-max:after{
-    width:10px;
-    height:8px;
-    border:1px solid white;
-    border-top:3px solid white;
-    top:4px;
-    left:4px;
-}
-.title-bar-min:after{
-    width:8px;
-    border-bottom:2px solid white;
-    bottom:4px;
-    left:4px;
-}
-
-.window .content{
-    position:absolute;
-    box-sizing: border-box;
-    padding:10px;
-    height:465px;
-    width:496px;
-    left:2px;
-    bottom:3px;
-    background-color:white;
-        overflow: auto; 
-}
-
-    @font-face { font-family: 'Franklin Gothic Medium'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/framdit.ttf); font-style: italic; }
-    @font-face { font-family: 'Tahoma'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/tahoma.ttf); }
-
-     @media (max-width: 900px) {
-  body {
-    background: #5a7edc;
-  }
-  .screen {
-    background-size: cover;
-    background-position: center;
-  }
-  .desktop-area {
-    flex-direction: column;
-    height: auto;
-    min-height: calc(100% - 30px);
-  }
-  .main-area {
-    width: 100%;
-  }
-
-  .sidebar {
-    width: 100%;
-  }
-  .sidebar-area {
-    width: 100%;
-  }
-  .window-box {
-    max-width: 100%;
-  }
-}
-
-    @media (max-width: 900px) {
-  .desktop-area {
-    flex-direction: column;
-    height: auto;
-    min-height: calc(100% - 30px);
-  }
-  .main-area {
-    width: 100%;
-  }
-  .sidebar {
-    width: 100%;
-  }
-  .sidebar-area {
-    width: 100%;
-  }
-  .window-box {
-    max-width: 100%;
-  }
-}
-
+    .screen {
+      position: relative;
+      background: url("windows_xp_bliss.jpg") center/cover no-repeat #0c8dea;
+      width: 100%;
+      height: 100%;
+    }
+    .screen .taskbar {
+      position: absolute;
+      display: flex;
+      z-index: 100;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    .screen .taskbar .main-section {
+      height: 100%;
+      flex-grow: 1;
+      background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #333 100%) center/cover no-repeat;
+    }
+    .screen .taskbar .main-section .start-button {
+      position: relative;
+      display: inline-block;
+      font-size: 18px;
+      color: white;
+      font-style: italic;
+      padding: 5px 25px 5px 15px;
+      text-shadow: 1px 1px 1px #333;
+      border-radius: 0px 10px 15px 0px;
+      border: none;
+      transform: skewX(-3deg);
+      left: -5px;
+      box-shadow: 0px 5px 10px #79ce71 inset;
+      background: radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat;
+    }
     .screen .taskbar .main-section .start-button::before {
-  background: url("logo.png") center/cover no-repeat;
-     }
+      content: '';
+      background: url("logo.png") center/cover no-repeat;
+      position: relative;
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+      top: 1px;
+      transform: skewX(3deg);
+      -webkit-filter: drop-shadow(1px 1px 1px #333);
+    }
+    .screen .taskbar .main-section .start-menu {
+      display: none;
+      position: absolute;
+      background-color: #0c8dea;
+      width: 380px;
+      height: 550px;
+      left: 0%;
+      bottom: 100%;
+      z-index: -50;
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: 2px 6px 10px #333, -2px 0px 5px rgba(20, 20, 20, 0.6) inset, 2px 0px 3px #7fbce8 inset;
+      overflow: hidden;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-header {
+      display: flex;
+      align-items: center;
+      height: 65px;
+      box-shadow: 3px 2px 3px #7fbce8 inset;
+      background: linear-gradient(to bottom, #245edb 0%, #0c8dea 100%);
+      padding: 8px 0px 7px 8px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-header .account-image-wrapper {
+      background-color: white;
+      border-radius: 5px;
+      padding: 2px;
+      height: 52px;
+      display: inline-block;
+      box-shadow: 2px 2px 4px #333;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-header .account-name {
+      display: inline-block;
+      margin: 0;
+      color: white;
+      font-size: 18px;
+      font-weight: normal;
+      margin-left: 10px;
+      text-shadow: 0px 0px 3px #555;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body {
+      position: relative;
+      display: flex;
+      height: calc(100% - 65px - 43px);
+      background-color: white;
+      border: 1px solid #0c8dea;
+      margin: 0 1px;
+      overflow: hidden;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body::before {
+      content: '';
+      position: absolute;
+      top: -7.5px;
+      left: 10%;
+      width: 80%;
+      height: 5px;
+      border-radius: 50%;
+      box-shadow: 0px 4px 5px #e88f0b;
+      z-index: 10;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item > * {
+      display: inline-block;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .icon {
+      height: 30px;
+      width: 30px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .label {
+      margin-left: 5px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .label .intent {
+      font-weight: bold;
+      color: #373738;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item .label .program {
+      color: gray;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item:hover {
+      background-color: #3d64bd;
+      color: white;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-item:hover .label {
+      color: white;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .divider {
+      margin: 5px 0px;
+      height: 1px;
+      background: linear-gradient(to right, white 0%, #d3d3c8 50%, white 100%) center/cover no-repeat;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      height: 100%;
+      width: 50%;
+      padding: 8px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item .label .intent {
+      font-weight: bold;
+      color: #373738;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item .label .program {
+      color: gray;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item:hover .label .intent,
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.intent-item:hover .label .program {
+      color: inherit;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.favorite-item .label {
+      color: #373738;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .start-menu-item.favorite-item:hover .label {
+      color: white;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0px 8px 8px 8px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs .start-menu-item.all-programs-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+      color: #373738;
+      padding: 5px 0px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs .start-menu-item.all-programs-button::after {
+      content: '';
+      background: url("../images/startarrow.png") center/contain no-repeat;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-favorites .all-programs .start-menu-item.all-programs-button:hover {
+      color: white;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts {
+      display: inline-flex;
+      flex-direction: column;
+      height: 100%;
+      width: 50%;
+      padding: 8px;
+      background: #d3e5fa;
+      border-left: 1px solid #95bdee;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item .icon {
+      width: 25px;
+      height: 25px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item .label {
+      color: #29356c;
+      font-size: 10px;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item:hover .label {
+      color: white;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item.my-item .label {
+      font-weight: bold;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .start-menu-item.my-item:hover .label {
+      color: white;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-body .start-menu-shortcuts .divider {
+      background: linear-gradient(to right, transparent 0%, #aebad6 50%, transparent 100%) center/cover no-repeat;
+    }
+    .screen .taskbar .main-section .start-menu .start-menu-footer {
+      height: 43px;
+      background: linear-gradient(to top, #245edb 0%, #0c8dea 100%);
+      box-shadow: -2px -2px 5px rgba(20, 20, 20, 0.6) inset;
+    }
+    .screen .taskbar .main-section #start-menu-active {
+      display: none;
+    }
+    .screen .taskbar .main-section #start-menu-active:checked ~ .start-button {
+      box-shadow: 0px 0px 15px #333 inset;
+    }
+    .screen .taskbar .main-section #start-menu-active:checked ~ .start-menu {
+      display: block;
+    }
+
+    .container {
+      height: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 0;
+    }
+    .container .screen {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      line-height: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: default;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Tahoma, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .window {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background-color: #091E89;
+      overflow: hidden;
+      border-radius: 7px 7px 0 0;
+      z-index: 100;
+      top: 10%;
+      left: 40%;
+      display: none;
+      box-sizing: border-box;
+      min-width: 200px;
+    }
+    .resize-e, .resize-w {
+      position: absolute;
+      width: 10px;
+      height: 190px;
+      top: 5px;
+    }
+    .resize-w {
+      left: -5px;
+      cursor: w-resize;
+    }
+    .resize-e {
+      right: -5px;
+      cursor: e-resize;
+    }
+    .resize-n, .resize-s {
+      position: absolute;
+      width: calc(200px - 10px);
+      height: 10px;
+      left: 5px;
+    }
+    .resize-s {
+      bottom: -5px;
+      cursor: s-resize;
+    }
+    .resize-n {
+      top: -5px;
+      cursor: n-resize;
+    }
+    .resize-ne, .resize-nw, .resize-se, .resize-sw {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+    }
+    .resize-ne { cursor: ne-resize; }
+    .resize-sw { cursor: sw-resize; }
+    .resize-nw { cursor: nw-resize; }
+    .resize-se { cursor: se-resize; }
+    .resize-nw, .resize-ne { top: -5px; }
+    .resize-ne, .resize-se { right: 0px; }
+    .resize-sw, .resize-se { bottom: -5px; }
+
+    .title-bar {
+      width: 500px;
+      height: 35px;
+      background: linear-gradient(to bottom, #4094ff 0%, #0056e4 13%, #0056e4 71%, #16428b 100%);
+      box-sizing: border-box;
+    }
+    .title-bar .title-bar-title {
+      position: absolute;
+      top: 7.5px;
+      left: 7.5px;
+      color: white;
+      text-shadow: 1px 1px #10397E;
+      font-size: 15px;
+      pointer-events: none;
+    }
+    .title-bar .title-bar-close, .title-bar .title-bar-max, .title-bar .title-bar-min {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 5px;
+      right: 5px;
+      border-radius: 2px;
+      border: 1px solid white;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+    .title-bar .title-bar-close {
+      background: linear-gradient(135deg, #F1A689 0%, #C0442A 50%, #C2311E 100%);
+    }
+    .title-bar-close:before, .title-bar-close:after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 2px;
+      background-color: white;
+      border-radius: 2px;
+      top: 9px;
+      box-shadow: 0 0 2px 0 #ccc;
+    }
+    .title-bar-close:before {
+      transform: rotate(45deg);
+      left: 3px;
+    }
+    .title-bar-close:after {
+      transform: rotate(-45deg);
+      right: 3px;
+    }
+    .title-bar .title-bar-max, .title-bar .title-bar-min {
+      background: linear-gradient(135deg, #7EAED6 0%, #1B72FF 50%, #1655BE 100%);
+    }
+    .title-bar .title-bar-max { right: 30px; }
+    .title-bar .title-bar-min { right: 55px; }
+    .title-bar-max:after, .title-bar-min:after {
+      content: '';
+      position: absolute;
+      box-shadow: 0 0 0px 0 #ccc;
+    }
+    .title-bar-max:after {
+      width: 10px;
+      height: 8px;
+      border: 1px solid white;
+      border-top: 3px solid white;
+      top: 4px;
+      left: 4px;
+    }
+    .title-bar-min:after {
+      width: 8px;
+      border-bottom: 2px solid white;
+      bottom: 4px;
+      left: 4px;
+    }
+
+    .window .content {
+      position: absolute;
+      box-sizing: border-box;
+      padding: 10px;
+      height: 465px;
+      width: 496px;
+      left: 2px;
+      bottom: 3px;
+      background-color: white;
+      overflow: auto;
+    }
+
+    @font-face {
+      font-family: 'Franklin Gothic Medium';
+      src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/framdit.ttf);
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'Tahoma';
+      src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/tahoma.ttf);
+    }
 
     #kitty-overlay {
       position: fixed;
@@ -510,12 +431,11 @@ html, body {
       z-index: 10000;
       display: none;
       pointer-events: none;
+      max-width: 200px;
     }
-
     .spin-animation {
       animation: spinAndGrow 3s forwards linear;
     }
-
     @keyframes spinAndGrow {
       0% { transform: translate(-50%, -50%) rotate(0deg) scale(0); opacity: 1; }
       80% { transform: translate(-50%, -50%) rotate(1080deg) scale(50); opacity: 1; }
@@ -536,9 +456,8 @@ html, body {
       padding: 20px;
       box-sizing: border-box;
       overflow: auto;
-      pointer-events: none; 
+      pointer-events: none;
     }
-
     .main-area {
       display: flex;
       flex-direction: row;
@@ -547,14 +466,12 @@ html, body {
       flex: 1;
       min-width: 0;
       align-content: flex-start;
-      pointer-events: auto; 
+      pointer-events: auto;
     }
-
     .sidebar-area {
       flex: 0 0 auto;
-      pointer-events: auto; 
+      pointer-events: auto;
     }
-
     .window-box {
       width: fit-content;
       min-width: 300px;
@@ -569,11 +486,7 @@ html, body {
         linear-gradient(to left, #0034b0, #0056e1 1px, #0064f4 2px, rgba(0,0,0,0) 3px),
         linear-gradient(to top, #0034b1, #0056e1 1px, #0064f4 2px, rgba(0,0,0,0) 3px);
     }
-
-    .window-box * {
-      cursor: default;
-    }
-
+    .window-box * { cursor: default; }
     .window-box h2 {
       line-height: 32px;
       height: 30px;
@@ -595,15 +508,13 @@ html, body {
       text-shadow: 1px 1px 0 #0a2a95;
       white-space: nowrap;
     }
-
     .window-box .content {
       flex: 1;
       border: 1px solid #91adc6;
       margin: 0 2px 2px;
       background: white;
-      overflow: auto; 
+      overflow: auto;
     }
-
     .window-box .close {
       position: absolute;
       right: 6px;
@@ -622,21 +533,16 @@ html, body {
       background-color: #e81000;
       cursor: pointer;
     }
-
     .window-box .close:after {
       content: "";
       display: block;
       position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
+      top: 0; right: 0; left: 0; bottom: 0;
       border: 1px solid rgba(33, 0, 0, 0.2);
       border-radius: 2px;
     }
-
     .window-box .close:before {
-      content: "×";
+      content: "\00d7";
       position: absolute;
       left: 2.5px;
       top: -7px;
@@ -657,27 +563,19 @@ html, body {
       color: white;
       box-sizing: border-box;
     }
-
-    .sidebar details {
-      width: 100%;
-    }
-
+    .sidebar details { width: 100%; }
     .sidebar summary {
       cursor: pointer;
       padding: 10px 0;
       list-style: none;
     }
-
     .sidebar hr {
       width: 100%;
       border: none;
       border-top: 1px solid #555;
       margin: 0;
     }
-
-    .DetailsThing {
-      font-size: 20px;
-    }
+    .DetailsThing { font-size: 20px; }
 
     .footer-box {
       width: 100%;
@@ -691,8 +589,26 @@ html, body {
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    #ie-trigger {
-      cursor: pointer;
+    .proj-container { max-width: 1100px; width: 100%; padding: 20px; font-family: 'Segoe UI', system-ui, sans-serif; color: #e6f1ff; background: #0a192f; min-height: 100%; box-sizing: border-box; }
+    .proj-container h1 { font-size: 2rem; margin-bottom: 0.5rem; border-left: 5px solid #007bff; padding-left: 15px; }
+    .proj-container .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .proj-container .project-card { background: #112240; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+    .proj-container .project-image { width: 100%; aspect-ratio: 16/9; background: #233554; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #8892b0; margin-bottom: 15px; font-size: 0.9rem; border: 1px dashed rgba(255,255,255,0.1); }
+    .proj-container h3 { margin: 10px 0; color: #007bff; font-size: 1.1rem; }
+    .proj-container p { margin: 0; }
+    .proj-container small { color: #8892b0; font-size: 0.85rem; line-height: 1.4; }
+    .proj-container hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0; }
+
+    #ie-icon { cursor: pointer; }
+
+    @media (max-width: 900px) {
+      body { background: #5a7edc; }
+      .screen { background-size: cover; background-position: center; }
+      .desktop-area { flex-direction: column; height: auto; min-height: calc(100% - 30px); }
+      .main-area { width: 100%; }
+      .sidebar { width: 100%; }
+      .sidebar-area { width: 100%; }
+      .window-box { max-width: 100%; }
     }
   </style>
 </head>
@@ -707,42 +623,29 @@ html, body {
 
     <div class="desktop-area">
       <div class="main-area">
+
         <div class="window-box">
-          <h2>Logo.jpg<a href="#" class="close">Close</a></h2>
+          <h2>Logo.jpg<a href="#" class="close" onclick="this.closest('.window-box').style.display='none'; return false;">Close</a></h2>
           <div class="content">
             <div style="padding: 20px; color: black;">
-              <a href="https://ibb.co/B2sh9CTz">
-                <img src="https://i.ibb.co/XxJnqCF2/Screenshot-20260430-162504.png" alt="Screenshot-20260430-162504" border="0">
+              <a href="https://ibb.co/B2sh9CTz" target="_blank">
+                <img src="https://i.ibb.co/XxJnqCF2/Screenshot-20260430-162504.png" alt="Screenshot" border="0" style="max-width:100%;">
               </a>
             </div>
           </div>
         </div>
 
-        <div class="window-box" style="width: 1400px">
-          <h2>Submit your School email here somewhere<a href="#" class="close">Close</a></h2>
+        <div class="window-box" style="width: 500px;">
+          <h2>Submit your School email here somewhere<a href="#" class="close" onclick="this.closest('.window-box').style.display='none'; return false;">Close</a></h2>
           <div class="content">
             <div style="padding: 20px; color: black;">
-              <form
-  action="https://formspree.io/f/maqvyoqp"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <br>
-  <br>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-
-   <br>
-    <br>
-     <br>
-
-  <button type="submit">Send</button>
-</form>
+              <form action="https://formspree.io/f/maqvyoqp" method="POST">
+                <label>Your email:<br><input type="email" name="email" style="width:100%; margin-top:5px;"></label>
+                <br><br>
+                <label>Your message:<br><textarea name="message" style="width:100%; height:80px; margin-top:5px;"></textarea></label>
+                <br><br>
+                <button type="submit">Send</button>
+              </form>
             </div>
           </div>
         </div>
@@ -757,43 +660,42 @@ html, body {
 
       <div class="sidebar-area">
         <div class="window-box">
-          <h2><div class="text"><span>ContentSelector.py</span></div> <a href="#" class="close">Close</a></h2>
+          <h2><span>ContentSelector.py</span> <a href="#" class="close" onclick="this.closest('.window-box').style.display='none'; return false;">Close</a></h2>
           <div class="content">
             <div class="sidebar">
               <details data-title="Tab 1" data-text="Text for the first tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
+                <h3>TEXT WOW</h3>
               </details>
-              <hr>
-              <hr>
+              <hr><hr>
               <details data-title="Tab 2" data-text="Text for the second tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
+                <h3>TEXT WOW</h3>
               </details>
               <hr>
               <details data-title="Tab 3" data-text="Text for the third tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
+                <h3>TEXT WOW</h3>
               </details>
               <hr>
               <details data-title="Tab 4" data-text="Text for the fourth tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
+                <h3>TEXT WOW</h3>
               </details>
               <hr>
               <details data-title="Tab 5" data-text="Text for the fifth tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
+                <h3>TEXT WOW</h3>
               </details>
               <hr>
               <details data-title="Tab 6" data-text="Text for the sixth tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
+                <h3>TEXT WOW</h3>
               </details>
               <hr>
               <details data-title="Tab 7" data-text="Text for the seventh tab.">
                 <summary class="DetailsThing">CLICK ME</summary>
-                <h3> TEXT WOW</h3>
+                <h3>TEXT WOW</h3>
               </details>
             </div>
           </div>
@@ -804,26 +706,24 @@ html, body {
     <div class="taskbar">
       <div class="main-section">
         <input id="start-menu-active" type="checkbox">
-        <label class="start-button" for="start-menu-active">
-          start
-        </label>
+        <label class="start-button" for="start-menu-active">start</label>
         <div class="start-menu">
           <div class="start-menu-header">
             <div class="account-image-wrapper">
-              <img src="red flower.jpg" height="48px" width="48px">
+              <img src="red flower.jpg" height="48px" width="48px" alt="avatar">
             </div>
             <h1 class="account-name">Administrator</h1>
           </div>
           <div class="start-menu-body">
             <div class="start-menu-favorites">
 
-              <div class="start-menu-item intent-item" onclick="openWindow('Internet Explorer', 'you really thought there would be an internet explorer here?'); $('#kitty-overlay').css('animation-duration', '3s').show().addClass('spin-animation'); setTimeout(() => { $('#kitty-overlay').hide().removeClass('spin-animation'); }, 3000);">
-  <div class="icon" style="background-image:url('ie.png')"></div>
-  <div class="label">
-    <div class="intent">Internet</div>
-    <div class="program">Internet Explorer</div>
-  </div>
-</div>
+              <div class="start-menu-item intent-item" id="ie-icon">
+                <div class="icon" style="background-image:url('ie.png')"></div>
+                <div class="label">
+                  <div class="intent">Internet</div>
+                  <div class="program">Internet Explorer</div>
+                </div>
+              </div>
 
               <div class="start-menu-item intent-item" onclick="openWindow('Outlook Express', 'Your emails will not appear here')">
                 <div class="icon" style="background-image:url('email.png')"></div>
@@ -833,15 +733,18 @@ html, body {
                 </div>
               </div>
               <div class="divider"></div>
-<div class="start-menu-item favorite-item" onclick="openWindow('Photos', '&lt;div style=\'max-height:400px; overflow-y:auto; padding:10px;\'&gt;&lt;img src=\'https://i.ibb.co/N6Nb1Zrc/IMG-20260429-204602.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/HLXxB7Q9/IMG-20260429-204626.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/Rp6L8skz/IMG-20260429-204650.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/Z6Kd9h6H/IMG-20260429-204653.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/kg4sYNRz/IMG-20260429-205140.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;img src=\'https://i.ibb.co/kV1Vwhgy/IMG-20260429-205155.jpg\' style=\'max-width:100%; display:block; margin-bottom:10px;\'&gt;&lt;/div&gt;')">
-  <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/notepadicon.png')"></div>
-  <div class="label">Photos</div>
-</div>
+
+              <div class="start-menu-item favorite-item" onclick="openWindow('Photos', photosHtml)">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/notepadicon.png')"></div>
+                <div class="label">Photos</div>
+              </div>
+
               <div class="all-programs">
                 <div class="divider"></div>
                 <div class="start-menu-item all-programs-button">All Programs</div>
               </div>
             </div>
+
             <div class="start-menu-shortcuts">
               <div class="start-menu-item my-item" onclick="openWindow('My Computer', 'This is My Computer, or is it Your computer?')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/235.ico')"></div>
@@ -852,29 +755,22 @@ html, body {
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/22.ico')"></div>
                 <div class="label">Control Panel</div>
               </div>
-              <div class="start-menu-item" onclick="openWindow('Printers and Taxes', 'Printer settings or something.')">
+              <div class="start-menu-item" onclick="openWindow('Printers and Faxes', 'Printer settings or something.')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/138.ico')"></div>
                 <div class="label">Printers and Faxes</div>
               </div>
-               <div class="divider"></div>
-<div class="start-menu-item" onclick='openWindow("Join Guaza inovations Club TM", `<form action="https://formspree.io/f/maqvyoqp" method="POST">
-  <label>Your email: <br> <input type="email" name="email"></label>
-  <label>Your message: <br> <textarea name="message"></textarea></label>
-  <br>
-  <button type="submit">Send</button>
-</form>`)'>
-  <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/24.ico')"></div>
-  <div class="label">Join GIC</div>
-</div>
+              <div class="divider"></div>
+              <div class="start-menu-item" onclick="openWindow('Join Guaza inovations Club TM', gicFormHtml)">
+                <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/24.ico')"></div>
+                <div class="label">Join GIC</div>
+              </div>
               <div class="start-menu-item" onclick="openWindow('Search', 'Search results')">
                 <div class="icon" style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/23.ico')"></div>
                 <div class="label">Search</div>
               </div>
-
             </div>
           </div>
-          <div class="start-menu-footer">
-          </div>
+          <div class="start-menu-footer"></div>
         </div>
       </div>
       <div class="quick-section"></div>
@@ -883,31 +779,68 @@ html, body {
 </div>
 
 <script>
-  const sidebar = document.querySelector('.sidebar');
-  const allDetails = sidebar.querySelectorAll('details');
-  const footerTitle = document.getElementById('footer-title');
-  const footerText = document.getElementById('footer-text');
 
-  allDetails.forEach((targetDetail) => {
-    targetDetail.addEventListener("click", () => {
-      const title = targetDetail.getAttribute('data-title');
-      const text = targetDetail.getAttribute('data-text');
+const ieHtml = `<div class="proj-container">
+  <h1>Ongoing and Future Projects</h1>
+  <p><small>Currently tracking 16 active modules and developments.</small></p>
+  <hr>
+  <div class="project-grid">
+    <article class="project-card"><div class="project-image">Image 01</div><h3>Project Alpha</h3><p><small>Initial phase core architecture development.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 02</div><h3>Beta Framework</h3><p><small>Streamlining internal API communications.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 03</div><h3>Gamma Portal</h3><p><small>User interface and client-side dashboard.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 04</div><h3>Delta Sync</h3><p><small>Cloud-based database synchronization service.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 05</div><h3>Epsilon Security</h3><p><small>End-to-end encryption protocols and testing.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 06</div><h3>Zeta Analytics</h3><p><small>Data visualization and metric tracking engine.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 07</div><h3>Eta Mobile</h3><p><small>Optimizing assets for low-bandwidth devices.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 08</div><h3>Theta Automation</h3><p><small>Automated workflow scripts and task scheduling.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 09</div><h3>Iota Search</h3><p><small>Implementing rapid indexing for site-wide search.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 10</div><h3>Kappa Assets</h3><p><small>Centralized management for media and graphics.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 11</div><h3>Lambda Scripts</h3><p><small>Serverless function deployments for micro-tasks.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 12</div><h3>Mu Interface</h3><p><small>Experimental gesture-based control systems.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 13</div><h3>Nu Networking</h3><p><small>Redesigning peer-to-peer connectivity layers.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 14</div><h3>Xi Integration</h3><p><small>Third-party API and plugin connectivity.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 15</div><h3>Omicron Logic</h3><p><small>Refining the core decision-making algorithms.</small></p></article>
+    <article class="project-card"><div class="project-image">Image 16</div><h3>Pi Documentation</h3><p><small>Finalizing technical specs and user guides.</small></p></article>
+  </div>
+  <hr>
+</div>`;
 
-      if (title && text) {
-        footerTitle.textContent = title;
-        footerText.innerHTML = text;
+const photosHtml = `<div style="max-height:400px; overflow-y:auto; padding:10px;">
+  <img src="https://i.ibb.co/N6Nb1Zrc/IMG-20260429-204602.jpg" style="max-width:100%; display:block; margin-bottom:10px;">
+  <img src="https://i.ibb.co/HLXxB7Q9/IMG-20260429-204626.jpg" style="max-width:100%; display:block; margin-bottom:10px;">
+  <img src="https://i.ibb.co/Rp6L8skz/IMG-20260429-204650.jpg" style="max-width:100%; display:block; margin-bottom:10px;">
+  <img src="https://i.ibb.co/Z6Kd9h6H/IMG-20260429-204653.jpg" style="max-width:100%; display:block; margin-bottom:10px;">
+  <img src="https://i.ibb.co/kg4sYNRz/IMG-20260429-205140.jpg" style="max-width:100%; display:block; margin-bottom:10px;">
+  <img src="https://i.ibb.co/kV1Vwhgy/IMG-20260429-205155.jpg" style="max-width:100%; display:block; margin-bottom:10px;">
+</div>`;
+
+const gicFormHtml = `<form action="https://formspree.io/f/maqvyoqp" method="POST">
+  <label>Your email:<br><input type="email" name="email"></label><br><br>
+  <label>Your message:<br><textarea name="message"></textarea></label><br><br>
+  <button type="submit">Send</button>
+</form>`;
+
+const sidebar = document.querySelector('.sidebar');
+const allDetails = sidebar.querySelectorAll('details');
+const footerTitle = document.getElementById('footer-title');
+const footerText = document.getElementById('footer-text');
+
+allDetails.forEach((targetDetail) => {
+  targetDetail.addEventListener("click", () => {
+    const title = targetDetail.getAttribute('data-title');
+    const text = targetDetail.getAttribute('data-text');
+    if (title && text) {
+      footerTitle.textContent = title;
+      footerText.innerHTML = text;
+    }
+    allDetails.forEach((detail) => {
+      if (detail !== targetDetail) {
+        detail.removeAttribute("open");
       }
-
-      allDetails.forEach((detail) => {
-        if (detail !== targetDetail) {
-          detail.removeAttribute("open");
-        }
-      });
     });
   });
-</script>
+});
 
-<script>
 $(document).ready(function() {
 
   $('.screen').click(function(e){
@@ -916,22 +849,22 @@ $(document).ready(function() {
     }
   });
 
-  $("#ie-trigger").on("click", function() {
+  $('#ie-icon').on('click', function() {
+    openWindow('Internet Explorer', ieHtml);
     const $kitty = $("#kitty-overlay");
-    $kitty.css("animation-duration", "100s").show().addClass("spin-animation");
+    $kitty.css("animation-duration", "3s").show().addClass("spin-animation");
     setTimeout(() => {
       $kitty.hide().removeClass("spin-animation");
-    }, 10000);
+    }, 3000);
   });
 
   function updateClock() {
     var now = new Date();
+
   }
   var oneMinute = 1000 * 60;
   var now = new Date();
-  var timeUntilMinuteTick =
-      oneMinute -
-      (now.getSeconds() * 1000 + now.getMilliseconds());
+  var timeUntilMinuteTick = oneMinute - (now.getSeconds() * 1000 + now.getMilliseconds());
   setTimeout(function(){
     updateClock();
     setInterval(updateClock, oneMinute);
@@ -947,7 +880,6 @@ $(document).ready(function() {
       activeWindow = null;
 
   $(document).on("mousedown", ".title-bar, .resize-s, .resize-se, .resize-e, .resize-w, .resize-n, .resize-sw, .resize-nw, .resize-ne", function(e) {
-
     if($(e.target).hasClass('title-bar-close') || $(e.target).hasClass('title-bar-max') || $(e.target).hasClass('title-bar-min')) return;
 
     offsetX = e.offsetX;
@@ -955,6 +887,9 @@ $(document).ready(function() {
     mouseIsDown = true;
     resizeDir = $(e.target).attr("class");
     activeWindow = $(e.target).closest(".window");
+
+    $('.window').css('z-index', 100);
+    activeWindow.css('z-index', 101);
   });
 
   $(window).mouseup(function(e) {
@@ -977,12 +912,8 @@ $(document).ready(function() {
         if(newX < -winWidth + 50) newX = -winWidth + 50;
         if(newX > $('.screen').width() - 50) newX = $('.screen').width() - 50;
 
-        activeWindow.css({
-          left: newX,
-          top: newY
-        });
+        activeWindow.css({ left: newX, top: newY });
       } else {
-
         if (resizeDir.indexOf("e") > -1) {
           newWidth = e.pageX - winOffset.left;
           if (newWidth < minWidth) newWidth = minWidth;
@@ -1009,44 +940,38 @@ $(document).ready(function() {
         }
 
         if (newWidth) {
-            activeWindow.find(".title-bar").css({ width: newWidth });
-            activeWindow.find(".content").css({ width: newWidth - 4 });
-            activeWindow.css({ width: newWidth });
+          activeWindow.find(".title-bar").css({ width: newWidth });
+          activeWindow.find(".content").css({ width: newWidth - 4 });
+          activeWindow.css({ width: newWidth });
         }
         if (newHeight) {
-            activeWindow.find(".content").css({ height: newHeight - 35 });
-            activeWindow.css({ height: newHeight });
+          activeWindow.find(".content").css({ height: newHeight - 35 });
+          activeWindow.css({ height: newHeight });
         }
         if (newX !== undefined) activeWindow.css({ left: newX });
         if (newY !== undefined) activeWindow.css({ top: newY });
 
-        activeWindow.find(".resize-e, .resize-w").css({
-            height: winHeight - 10
-        });
-        activeWindow.find(".resize-s, .resize-n").css({
-            width: winWidth - 10
-        });
+        activeWindow.find(".resize-e, .resize-w").css({ height: winHeight - 10 });
+        activeWindow.find(".resize-s, .resize-n").css({ width: winWidth - 10 });
       }
     }
   });
 
   $(window).resize(function() {
-      var screenW = $('.screen').width();
-      var screenH = $('.screen').height();
-
-      $('.window').each(function() {
-          var $win = $(this);
-          var pos = $win.offset();
-          var w = $win.width();
-          var h = $win.height();
-
-          if(pos.left + w > screenW) {
-              $win.css('left', Math.max(0, screenW - w - 10));
-          }
-          if(pos.top + h > screenH) {
-              $win.css('top', Math.max(0, screenH - h - 40));
-          }
-      });
+    var screenW = $('.screen').width();
+    var screenH = $('.screen').height();
+    $('.window').each(function() {
+      var $win = $(this);
+      var pos = $win.offset();
+      var w = $win.width();
+      var h = $win.height();
+      if(pos.left + w > screenW) {
+        $win.css('left', Math.max(0, screenW - w - 10));
+      }
+      if(pos.top + h > screenH) {
+        $win.css('top', Math.max(0, screenH - h - 40));
+      }
+    });
   });
 
 });
@@ -1054,12 +979,12 @@ $(document).ready(function() {
 function openWindow(title, content) {
   const id = 'win-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5);
   const html = `
-    <div class="window" id="${id}" style="display:block;top:15%;left:35%;">
+    <div class="window" id="${id}" style="display:block; top:15%; left:35%;">
       <div class="title-bar">
         <div class="title-bar-title">${title}</div>
         <div class="title-bar-close" onclick="$('#${id}').remove()"></div>
-        <div class="title-bar-max"></div>
-        <div class="title-bar-min"></div>
+        <div class="title-bar-max" onclick="$('#${id}').css({width:'100%',height:'calc(100% - 30px)',top:0,left:0}); $('#${id} .title-bar').css('width','100%'); $('#${id} .content').css({width:'calc(100% - 4px)',height:'calc(100% - 35px)'});"></div>
+        <div class="title-bar-min" onclick="$('#${id}').hide();"></div>
       </div>
       <div class="content">${content}</div>
       <div class="resize-n"></div>
@@ -1073,8 +998,12 @@ function openWindow(title, content) {
     </div>
   `;
   $('#windows-container').append(html);
+
+  $('.window').css('z-index', 100);
+  $('#' + id).css('z-index', 101);
 }
 </script>
 
 </body>
 </html>
+
