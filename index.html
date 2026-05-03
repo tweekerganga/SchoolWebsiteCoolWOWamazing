@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>zwiebelsaft</title>
- 
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <style>
 
-    /* expect that most of this is made with AI, i will be replacing everything with my own written code however id like to see how things i want to do are written */
 .screen {
   position: relative;
   background: url("windows_xp_bliss.jpg") center/cover no-repeat #0c8dea;
+  width: 100%;
+  height: 100%;
 }
 .screen .taskbar {
   position: absolute;
@@ -42,7 +43,7 @@
 }
 .screen .taskbar .main-section .start-button::before {
   content: '';
-  background: url("../images/logo.png") center/cover no-repeat;
+  background: url("logo.png") center/cover no-repeat;
   position: relative;
   display: inline-block;
   height: 15px;
@@ -271,115 +272,113 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: verdana;
+  overflow: hidden; 
 }
 
-/*
-
-body{
-	min-width:1000px;
-	min-height:1000px;
-	user-select: none;
-	font-family:"MS Reference", sans-serif;
-}
-*/
 .window{
-	position:absolute;
-	width:500px;
-	height:500px;
-	background-color:#091E89;
-	overflow:hidden;
-	border-radius:7px 7px 0 0;
-	z-index: 100;
-	top: 10%;
-	left: 40%;
-	display: none;
+    position:absolute;
+    width:500px;
+    height:500px;
+    background-color:#091E89;
+    overflow:hidden;
+    border-radius:7px 7px 0 0;
+    z-index: 100;
+    top: 10%;
+    left: 40%;
+    display: none;
+        box-sizing: border-box; 
+        min-width: 200px; 
 }
 .resize-e, .resize-w{
-	position:absolute;
-	width:10px;
-	height:190px;
-	top:5px;
+    position:absolute;
+    width:10px;
+    height:190px;
+    top:5px;
 
 }
 .resize-w{
-	left:-5px;
-	cursor: w-resize;
+    left:-5px;
+    cursor: w-resize;
 }
 .resize-e{
-	right:-5px;
-	cursor: e-resize;
+    right:-5px;
+    cursor: e-resize;
 }
 
 .resize-n,.resize-s{
-	position:absolute;
-	width:200px - 10px;
-	height:10px;
-	left:5px;
-	
+    position:absolute;
+    width:200px - 10px;
+    height:10px;
+    left:5px;
+
 }
 .resize-s{
-	bottom:-5px;
-	cursor:s-resize;
+    bottom:-5px;
+    cursor:s-resize;
 }
 .resize-n{
-	top:-5px;
-	cursor:n-resize;
+    top:-5px;
+    cursor:n-resize;
 }
 
 .resize-ne,.resize-nw,.resize-se,.resize-sw{
-	position: absolute;
-	width:10px;
-	height:10px;
+    position: absolute;
+    width:10px;
+    height:10px;
 }
 .resize-ne
 {
-	cursor:ne-resize;
+    cursor:ne-resize;
 }
 .resize-sw{
-	cursor:sw-resize;
+    cursor:sw-resize;
 }
 .resize-nw
 {
-	cursor:nw-resize;
+    cursor:nw-resize;
 }
 .resize-se{
-	cursor:se-resize;
+    cursor:se-resize;
 }
 .resize-nw,.resize-ne
 {
-	top:-5px;
+    top:-5px;
 }
 .resize-ne,.resize-se{
-	right:0px;
+    right:0px;
 }
 .resize-sw,.resize-se
 {
-	bottom:-5px;
+    bottom:-5px;
 }
 .title-bar{
-	width:500px;
-	height:35px;
-	background: linear-gradient(to bottom, #4094ff 0%,#0056e4 13%,#0056e4 71%,#16428b 100%);
+    width:500px;
+    height:35px;
+    background: linear-gradient(to bottom, #4094ff 0%,#0056e4 13%,#0056e4 71%,#16428b 100%);
+        box-sizing: border-box;
 }
 .title-bar .title-bar-title{
-	position:absolute;
-	top:7.5px;
-	left:7.5px;
-	color:white;
-	text-shadow: 1px 1px #10397E;
-	font-size:15px;
+    position:absolute;
+    top:7.5px;
+    left:7.5px;
+    color:white;
+    text-shadow: 1px 1px #10397E;
+    font-size:15px;
+        pointer-events: none; 
 }
 .title-bar .title-bar-close,.title-bar .title-bar-max, .title-bar .title-bar-min{
-	position: absolute;
-	width:20px;
-	height:20px;
-	top:5px;
-	right:5px;
-	border-radius:2px;
-	border:1px solid white;
+    position: absolute;
+    width:20px;
+    height:20px;
+    top:5px;
+    right:5px;
+    border-radius:2px;
+    border:1px solid white;
+        cursor: pointer;
+        pointer-events: auto; 
 }
 .title-bar .title-bar-close{
-	background: linear-gradient(135deg, #F1A689 0%,#C0442A 50%,#C2311E 100%); 
+    background: linear-gradient(135deg, #F1A689 0%,#C0442A 50%,#C2311E 100%); 
 }
 .title-bar-close:before,.title-bar-close:after{
     content:'';
@@ -405,15 +404,15 @@ body{
 }
 
 .title-bar .title-bar-max, .title-bar .title-bar-min{
-	background: linear-gradient(135deg, #7EAED6 0%,#1B72FF 50%,#1655BE 100%); 
+    background: linear-gradient(135deg, #7EAED6 0%,#1B72FF 50%,#1655BE 100%); 
 }
 .title-bar .title-bar-max
 {
-	right:30px;
+    right:30px;
 }
 .title-bar .title-bar-min
 {
-	right:55px;
+    right:55px;
 }
 
 .title-bar-max:after,.title-bar-min:after{
@@ -422,41 +421,34 @@ body{
     box-shadow:0 0 0px 0 #ccc;
 }
 .title-bar-max:after{
-	width:10px;
+    width:10px;
     height:8px;
-	border:1px solid white;
-	border-top:3px solid white;
-	top:4px;
-	left:4px;
+    border:1px solid white;
+    border-top:3px solid white;
+    top:4px;
+    left:4px;
 }
 .title-bar-min:after{
     width:8px;
-	border-bottom:2px solid white;
+    border-bottom:2px solid white;
     bottom:4px;
-	left:4px;
+    left:4px;
 }
 
 .window .content{
-	position:absolute;
-	box-sizing: border-box;
-	padding:10px;
-	height:465px;
-	width:496px;
-	left:2px;
-	bottom:3px;
-	background-color:white;
+    position:absolute;
+    box-sizing: border-box;
+    padding:10px;
+    height:465px;
+    width:496px;
+    left:2px;
+    bottom:3px;
+    background-color:white;
+        overflow: auto; 
 }
 
-/* have a good day stranger! */
-
-
-
-    
     @font-face { font-family: 'Franklin Gothic Medium'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/framdit.ttf); font-style: italic; }
     @font-face { font-family: 'Tahoma'; src: url(https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/fonts/tahoma.ttf); }
-
-   
-
 
      @media (max-width: 900px) {
   body {
@@ -474,10 +466,7 @@ body{
   .main-area {
     width: 100%;
   }
-  .window-box[style*="1400px"] {
-    width: 100% !important;
-    max-width: 100%;
-  }
+
   .sidebar {
     width: 100%;
   }
@@ -488,8 +477,6 @@ body{
     max-width: 100%;
   }
 }
-
-
 
     @media (max-width: 900px) {
   .desktop-area {
@@ -500,10 +487,6 @@ body{
   .main-area {
     width: 100%;
   }
-  .window-box[style*="1400px"] {
-    width: 100% !important;
-    max-width: 100%;
-  }
   .sidebar {
     width: 100%;
   }
@@ -515,7 +498,6 @@ body{
   }
 }
 
-    
     .screen .taskbar .main-section .start-button::before {
   background: url("logo.png") center/cover no-repeat;
      }
@@ -554,6 +536,7 @@ body{
       padding: 20px;
       box-sizing: border-box;
       overflow: auto;
+      pointer-events: none; 
     }
 
     .main-area {
@@ -564,10 +547,12 @@ body{
       flex: 1;
       min-width: 0;
       align-content: flex-start;
+      pointer-events: auto; 
     }
 
     .sidebar-area {
       flex: 0 0 auto;
+      pointer-events: auto; 
     }
 
     .window-box {
@@ -616,6 +601,7 @@ body{
       border: 1px solid #91adc6;
       margin: 0 2px 2px;
       background: white;
+      overflow: auto; 
     }
 
     .window-box .close {
@@ -634,6 +620,7 @@ body{
         linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0)),
         linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0));
       background-color: #e81000;
+      cursor: pointer;
     }
 
     .window-box .close:after {
@@ -713,10 +700,10 @@ body{
 
 <img id="kitty-overlay" src="https://i.ibb.co/5XWHxs2C/CUTEKITTY.jpg" alt="Spinning Kitty">
 
-<div id="windows-container"></div>
-
 <div class="container">
   <div class="screen">
+
+    <div id="windows-container"></div>
 
     <div class="desktop-area">
       <div class="main-area">
@@ -749,7 +736,7 @@ body{
     Your message:
     <textarea name="message"></textarea>
   </label>
-  <!-- your other form fields go here -->
+
    <br>
     <br>
      <br>
@@ -829,9 +816,6 @@ body{
           </div>
           <div class="start-menu-body">
             <div class="start-menu-favorites">
-   
-
-
 
               <div class="start-menu-item intent-item" onclick="openWindow('Internet Explorer', 'you really thought there would be an internet explorer here?'); $('#kitty-overlay').css('animation-duration', '3s').show().addClass('spin-animation'); setTimeout(() => { $('#kitty-overlay').hide().removeClass('spin-animation'); }, 3000);">
   <div class="icon" style="background-image:url('ie.png')"></div>
@@ -840,8 +824,6 @@ body{
     <div class="program">Internet Explorer</div>
   </div>
 </div>
-
-
 
               <div class="start-menu-item intent-item" onclick="openWindow('Outlook Express', 'Your emails will not appear here')">
                 <div class="icon" style="background-image:url('email.png')"></div>
@@ -900,9 +882,6 @@ body{
   </div>
 </div>
 
-<!-- from here the scripts had been made with Kimi AI -->
-
-
 <script>
   const sidebar = document.querySelector('.sidebar');
   const allDetails = sidebar.querySelectorAll('details');
@@ -959,16 +938,6 @@ $(document).ready(function() {
   }, timeUntilMinuteTick);
   updateClock();
 
-  $(window).resize(function(){
-    $('.screen').css('width', '120vh');
-    $('.screen').css('height', '90vh');
-
-    if($('.screen').width() >= $('.container').width()) {
-      $('.screen').css('width', $('.container').width() + 'px');
-      $('.screen').css('height', ($('.container').width() / 4 * 3) + 'px');
-    }
-  });
-
   var mouseIsDown = false,
       offsetX = 10,
       offsetY = 10,
@@ -978,6 +947,9 @@ $(document).ready(function() {
       activeWindow = null;
 
   $(document).on("mousedown", ".title-bar, .resize-s, .resize-se, .resize-e, .resize-w, .resize-n, .resize-sw, .resize-nw, .resize-ne", function(e) {
+
+    if($(e.target).hasClass('title-bar-close') || $(e.target).hasClass('title-bar-max') || $(e.target).hasClass('title-bar-min')) return;
+
     offsetX = e.offsetX;
     offsetY = e.offsetY;
     mouseIsDown = true;
@@ -992,101 +964,91 @@ $(document).ready(function() {
   $(window).mousemove(function(e) {
     if (mouseIsDown && activeWindow) {
       var newWidth, newHeight, newX, newY;
+      var winOffset = activeWindow.offset();
+      var winWidth = activeWindow.width();
+      var winHeight = activeWindow.height();
+
       if (resizeDir === "title-bar") {
+        newX = e.pageX - offsetX;
+        newY = e.pageY - offsetY;
+
+        if(newY < 0) newY = 0;
+        if(newY > $('.screen').height() - 50) newY = $('.screen').height() - 50;
+        if(newX < -winWidth + 50) newX = -winWidth + 50;
+        if(newX > $('.screen').width() - 50) newX = $('.screen').width() - 50;
+
         activeWindow.css({
-          left: e.pageX - offsetX,
-          top: e.pageY - offsetY
+          left: newX,
+          top: newY
         });
-      } else if (resizeDir === "resize-e") {
-        newWidth = e.pageX - activeWindow.offset().left
-        if (newWidth <= minWidth) {
-          newWidth = 200;
+      } else {
+
+        if (resizeDir.indexOf("e") > -1) {
+          newWidth = e.pageX - winOffset.left;
+          if (newWidth < minWidth) newWidth = minWidth;
         }
-      } else if (resizeDir === "resize-w") {
-        newX = activeWindow.offset().left - (activeWindow.offset().left - e.pageX)
-        newWidth = activeWindow.width() + activeWindow.offset().left - e.pageX;
-        if (newWidth <= minWidth) {
-          newWidth = 200;
-          newX = activeWindow.offset().left;
+        if (resizeDir.indexOf("s") > -1) {
+          newHeight = e.pageY - winOffset.top;
+          if (newHeight < minHeight) newHeight = minHeight;
         }
-      } else if (resizeDir === "resize-n") {
-        newY = activeWindow.offset().top - (activeWindow.offset().top - e.pageY);
-        newHeight = activeWindow.height() + activeWindow.offset().top - e.pageY;
-        if (newHeight <= minHeight) {
-          newHeight = 200;
-          newY = activeWindow.offset().top;
+        if (resizeDir.indexOf("w") > -1) {
+          newWidth = winWidth + (winOffset.left - e.pageX);
+          newX = e.pageX;
+          if (newWidth < minWidth) {
+            newWidth = minWidth;
+            newX = winOffset.left;
+          }
         }
-      } else if (resizeDir === "resize-nw") {
-        newY = activeWindow.offset().top - (activeWindow.offset().top - e.pageY);
-        newHeight = activeWindow.height() + activeWindow.offset().top - e.pageY;
-        if (newHeight <= minHeight) {
-          newHeight = 200;
-          newY = activeWindow.offset().top;
-        };
-        newX = activeWindow.offset().left - (activeWindow.offset().left - e.pageX)
-        newWidth = activeWindow.width() + activeWindow.offset().left - e.pageX;
-        if (newWidth <= minWidth) {
-          newWidth = 200;
-          newX = activeWindow.offset().left;
+        if (resizeDir.indexOf("n") > -1) {
+          newHeight = winHeight + (winOffset.top - e.pageY);
+          newY = e.pageY;
+          if (newHeight < minHeight) {
+            newHeight = minHeight;
+            newY = winOffset.top;
+          }
         }
-      } else if (resizeDir === "resize-ne") {
-        newY = activeWindow.offset().top - (activeWindow.offset().top - e.pageY);
-        newHeight = activeWindow.height() + activeWindow.offset().top - e.pageY;
-        if (newHeight <= minHeight) {
-          newHeight = 200;
-          newY = activeWindow.offset().top;
-        };
-        newWidth = e.pageX - activeWindow.offset().left
-        if (newWidth <= minWidth) {
-          newWidth = 200;
+
+        if (newWidth) {
+            activeWindow.find(".title-bar").css({ width: newWidth });
+            activeWindow.find(".content").css({ width: newWidth - 4 });
+            activeWindow.css({ width: newWidth });
         }
-      } else if (resizeDir === "resize-s") {
-        newHeight = e.pageY - activeWindow.offset().top
-        if (newHeight <= minHeight) {
-          newHeight = 200;
+        if (newHeight) {
+            activeWindow.find(".content").css({ height: newHeight - 35 });
+            activeWindow.css({ height: newHeight });
         }
-      } else if (resizeDir === "resize-se") {
-        newHeight = e.pageY - activeWindow.offset().top
-        if (newHeight <= minHeight) {
-          newHeight = 200;
-        }
-        newWidth = e.pageX - activeWindow.offset().left
-        if (newWidth <= minWidth) {
-          newWidth = 200;
-        }
-      } else if (resizeDir === "resize-sw") {
-        newHeight = e.pageY - activeWindow.offset().top
-        if (newHeight <= minHeight) {
-          newHeight = 200;
-        }
-        newX = activeWindow.offset().left - (activeWindow.offset().left - e.pageX)
-        newWidth = activeWindow.width() + activeWindow.offset().left - e.pageX;
-        if (newWidth <= minWidth) {
-          newWidth = 200;
-          newX = activeWindow.offset().left;
-        }
+        if (newX !== undefined) activeWindow.css({ left: newX });
+        if (newY !== undefined) activeWindow.css({ top: newY });
+
+        activeWindow.find(".resize-e, .resize-w").css({
+            height: winHeight - 10
+        });
+        activeWindow.find(".resize-s, .resize-n").css({
+            width: winWidth - 10
+        });
       }
-      activeWindow.find(".resize-e, .resize-w").css({
-        height: activeWindow.height() - 10
-      });
-      activeWindow.find(".resize-s, .resize-n").css({
-        width: activeWindow.width() - 10
-      });
-      activeWindow.css({
-        width: newWidth,
-        height: newHeight,
-        left: newX,
-        top: newY
-      });
-      activeWindow.find(".title-bar").css({
-        width: newWidth
-      });
-      activeWindow.find(".content").css({
-        width: newWidth - 4,
-        height: newHeight - 35
-      });
     }
   });
+
+  $(window).resize(function() {
+      var screenW = $('.screen').width();
+      var screenH = $('.screen').height();
+
+      $('.window').each(function() {
+          var $win = $(this);
+          var pos = $win.offset();
+          var w = $win.width();
+          var h = $win.height();
+
+          if(pos.left + w > screenW) {
+              $win.css('left', Math.max(0, screenW - w - 10));
+          }
+          if(pos.top + h > screenH) {
+              $win.css('top', Math.max(0, screenH - h - 40));
+          }
+      });
+  });
+
 });
 
 function openWindow(title, content) {
