@@ -628,7 +628,7 @@
         <div class="window-box">
           <h2>Logo.jpg<a href="#" class="close" onclick="this.closest('.window-box').style.display='none'; return false;">Close</a></h2>
           <div class="content">
-            <div style="padding: 20px; color: black;">
+            <div style="padding: 20px; color: black; width: 300px;">
               <a href="https://ibb.co/B2sh9CTz" target="_blank">
                 <img src="https://i.ibb.co/XxJnqCF2/Screenshot-20260430-162504.png" alt="Screenshot" border="0" style="max-width:100%;">
               </a>
@@ -781,30 +781,66 @@
 
 <script>
 
-const ieHtml = `<div class="proj-container">
-  <h1>Ongoing and Future Projects</h1>
-  <p><small>Currently tracking 16 active modules and developments.</small></p>
-  <hr>
-  <div class="project-grid">
-    <article class="project-card"><div class="project-image">Image 01</div><h3>Project Alpha</h3><p><small>Initial phase core architecture development.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 02</div><h3>Beta Framework</h3><p><small>Streamlining internal API communications.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 03</div><h3>Gamma Portal</h3><p><small>User interface and client-side dashboard.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 04</div><h3>Delta Sync</h3><p><small>Cloud-based database synchronization service.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 05</div><h3>Epsilon Security</h3><p><small>End-to-end encryption protocols and testing.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 06</div><h3>Zeta Analytics</h3><p><small>Data visualization and metric tracking engine.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 07</div><h3>Eta Mobile</h3><p><small>Optimizing assets for low-bandwidth devices.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 08</div><h3>Theta Automation</h3><p><small>Automated workflow scripts and task scheduling.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 09</div><h3>Iota Search</h3><p><small>Implementing rapid indexing for site-wide search.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 10</div><h3>Kappa Assets</h3><p><small>Centralized management for media and graphics.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 11</div><h3>Lambda Scripts</h3><p><small>Serverless function deployments for micro-tasks.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 12</div><h3>Mu Interface</h3><p><small>Experimental gesture-based control systems.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 13</div><h3>Nu Networking</h3><p><small>Redesigning peer-to-peer connectivity layers.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 14</div><h3>Xi Integration</h3><p><small>Third-party API and plugin connectivity.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 15</div><h3>Omicron Logic</h3><p><small>Refining the core decision-making algorithms.</small></p></article>
-    <article class="project-card"><div class="project-image">Image 16</div><h3>Pi Documentation</h3><p><small>Finalizing technical specs and user guides.</small></p></article>
+const ieHtml = `
+<div style="display:flex; flex-direction:column; height:100%;">
+
+  <!-- Address Bar -->
+  <div style="height:32px; background:linear-gradient(to bottom,#f0f0f0,#e0e0e0); display:flex; align-items:center; padding:0 6px; gap:4px; border-bottom:1px solid #a0a0a0; flex-shrink:0;">
+    <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">←</button>
+    <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">→</button>
+    <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">▼</button>
+    <label style="font-size:11px; color:#333; flex-shrink:0;">Address</label>
+    <div style="flex:1; height:24px; border:1px solid #7a9cd3; background:white; display:flex; align-items:center; padding:0 6px; font-size:12px; color:#000; min-width:0;">http://www.zwiebelsaft.net/index.html</div>
+    <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">↻</button>
+    <button style="width:24px; height:24px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:11px; flex-shrink:0;">▶</button>
   </div>
-  <hr>
-</div>`;
+
+  <!-- Toolbar -->
+  <div style="height:36px; background:linear-gradient(to bottom,#f8f8f8,#e0e0e0); display:flex; align-items:center; padding:0 6px; gap:4px; border-bottom:1px solid #b0b0b0; flex-shrink:0;">
+    <button style="height:24px; padding:0 10px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e8e8e8); font-size:11px; cursor:pointer; border-radius:2px; display:flex; align-items:center; gap:4px;">
+      <span style="font-size:16px; color:#c4a000;">★</span>
+      <span style="font-size:11px;">Favorites</span>
+    </button>
+    <div style="width:1px; height:20px; background:#b0b0b0; margin:0 4px;"></div>
+    <button style="height:24px; padding:0 10px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e8e8e8); font-size:11px; cursor:pointer; border-radius:2px;">Tools ▼</button>
+    <button style="height:24px; padding:0 10px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e8e8e8); font-size:11px; cursor:pointer; border-radius:2px;">Help ▼</button>
+  </div>
+
+  <!-- Tabs -->
+  <div style="height:28px; background:#e8e8e8; display:flex; align-items:flex-end; padding:0 4px; border-bottom:2px solid #7a9cd3; gap:2px; flex-shrink:0;">
+    <div style="min-width:140px; max-width:200px; height:26px; background:white; border:1px solid #7a9cd3; border-bottom:none; border-radius:4px 4px 0 0; display:flex; align-items:center; padding:0 8px; font-size:11px; cursor:pointer; position:relative; margin-bottom:-2px; z-index:2; font-weight:bold;">
+      <img src="https://i.ibb.co/RTfXYdBS/718smiley-png-utm-source-commons-wikimedia.png" alt="" style="width:14px; height:14px; margin-right:6px;">
+      <span>zwiebelsaft - Home</span>
+      <span style="margin-left:auto; width:14px; text-align:center; font-size:10px; color:#666;">×</span>
+    </div>
+    <div style="min-width:140px; max-width:200px; height:24px; background:linear-gradient(to bottom,#f0f0ff,#d0d0e0); border:1px solid #7a9cd3; border-bottom:none; border-radius:4px 4px 0 0; display:flex; align-items:center; padding:0 8px; font-size:11px; cursor:pointer; position:relative;">
+      <img src="https://i.ibb.co/RTfXYdBS/718smiley-png-utm-source-commons-wikimedia.png" alt="" style="width:14px; height:14px; margin-right:6px;">
+      <span>AHSJHISAKJ</span>
+      <span style="margin-left:auto; width:14px; text-align:center; font-size:10px; color:#666;">×</span>
+    </div>
+  </div>
+
+  <!-- Content Area (flex:1 pushes status bar down) -->
+  <div style="flex:1; background:white; overflow:auto; position:relative; min-height:0;">
+    <div style="padding:20px; font-family:Arial,sans-serif;">
+      <h1>HELP ME PLEASE AGHHHHHH.......</h1>
+      <hr>
+      <p>Welcome to zwiebelsaft.net!</p>
+    </div>
+  </div>
+
+  <!-- Status Bar (sticks to bottom because content above has flex:1) -->
+  <div style="height:22px; background:linear-gradient(to bottom,#f0f0f0,#e0e0e0); border-top:1px solid #b0b0b0; display:flex; align-items:center; padding:0 6px; font-size:11px; color:#333; flex-shrink:0;">
+    <div style="flex:1;">Done</div>
+    <div style="display:flex; gap:12px;">
+      <span>Internet | wow awesome: On</span>
+      <span>100%</span>
+      <span>♪</span>
+    </div>
+  </div>
+
+</div>
+`;
 
 const photosHtml = `<div style="max-height:400px; overflow-y:auto; padding:10px;">
   <img src="https://i.ibb.co/N6Nb1Zrc/IMG-20260429-204602.jpg" style="max-width:100%; display:block; margin-bottom:10px;">
@@ -1007,4 +1043,3 @@ function openWindow(title, content) {
 
 </body>
 </html>
-
