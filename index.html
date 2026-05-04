@@ -402,16 +402,17 @@
       left: 4px;
     }
 
-    .window .content {
+.window .content {
       position: absolute;
       box-sizing: border-box;
-      padding: 10px;
-      height: 465px;
-      width: 496px;
-      left: 2px;
-      bottom: 3px;
+
+      padding: 0; 
+      height: calc(100% - 35px);
+      width: 100%;
+      left: 0;
+      bottom: 0;
       background-color: white;
-      overflow: auto;
+      overflow: hidden; 
     }
 
     @font-face {
@@ -782,20 +783,18 @@
 <script>
 
 const ieHtml = `
-<div style="display:flex; flex-direction:column; height:100%;">
+<div style="display:flex; flex-direction:column; height:100%; width:100%; font-family: Tahoma, sans-serif; background:white;">
 
-  <!-- Address Bar -->
   <div style="height:32px; background:linear-gradient(to bottom,#f0f0f0,#e0e0e0); display:flex; align-items:center; padding:0 6px; gap:4px; border-bottom:1px solid #a0a0a0; flex-shrink:0;">
     <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">←</button>
     <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">→</button>
     <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">▼</button>
     <label style="font-size:11px; color:#333; flex-shrink:0;">Address</label>
-    <div style="flex:1; height:24px; border:1px solid #7a9cd3; background:white; display:flex; align-items:center; padding:0 6px; font-size:12px; color:#000; min-width:0;">https://guazatech.schoolforlife.online</div>
+    <div style="flex:1; height:24px; border:1px solid #7a9cd3; background:white; display:flex; align-items:center; padding:0 6px; font-size:12px; color:#000; min-width:0; overflow:hidden;">https://guazatech.schoolforlife.online</div>
     <button style="width:24px; height:22px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:12px; flex-shrink:0;">↻</button>
     <button style="width:24px; height:24px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e0e0e0); cursor:pointer; font-size:11px; flex-shrink:0;">▶</button>
   </div>
 
-  <!-- Toolbar -->
   <div style="height:36px; background:linear-gradient(to bottom,#f8f8f8,#e0e0e0); display:flex; align-items:center; padding:0 6px; gap:4px; border-bottom:1px solid #b0b0b0; flex-shrink:0;">
     <button style="height:24px; padding:0 10px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e8e8e8); font-size:11px; cursor:pointer; border-radius:2px; display:flex; align-items:center; gap:4px;">
       <span style="font-size:16px; color:#c4a000;">★</span>
@@ -806,36 +805,79 @@ const ieHtml = `
     <button style="height:24px; padding:0 10px; border:1px solid #b0b0b0; background:linear-gradient(to bottom,#fff,#e8e8e8); font-size:11px; cursor:pointer; border-radius:2px;">Help ▼</button>
   </div>
 
-  <!-- Tabs -->
   <div style="height:28px; background:#e8e8e8; display:flex; align-items:flex-end; padding:0 4px; border-bottom:2px solid #7a9cd3; gap:2px; flex-shrink:0;">
     <div style="min-width:140px; max-width:200px; height:26px; background:white; border:1px solid #7a9cd3; border-bottom:none; border-radius:4px 4px 0 0; display:flex; align-items:center; padding:0 8px; font-size:11px; cursor:pointer; position:relative; margin-bottom:-2px; z-index:2; font-weight:bold;">
-      <img src="https://i.ibb.co/RTfXYdBS/718smiley-png-utm-source-commons-wikimedia.png" alt="" style="width:14px; height:14px; margin-right:6px;">
+      <img src="https://i.ibb.co/RTfXYdBS/718smiley-png-utm-source-commons-wikimedia.png" style="width:14px; height:14px; margin-right:6px;">
       <span>zwiebelsaft - Home</span>
       <span style="margin-left:auto; width:14px; text-align:center; font-size:10px; color:#666;">×</span>
     </div>
     <div style="min-width:140px; max-width:200px; height:24px; background:linear-gradient(to bottom,#f0f0ff,#d0d0e0); border:1px solid #7a9cd3; border-bottom:none; border-radius:4px 4px 0 0; display:flex; align-items:center; padding:0 8px; font-size:11px; cursor:pointer; position:relative;">
-      <img src="https://i.ibb.co/RTfXYdBS/718smiley-png-utm-source-commons-wikimedia.png" alt="" style="width:14px; height:14px; margin-right:6px;">
+      <img src="https://i.ibb.co/RTfXYdBS/718smiley-png-utm-source-commons-wikimedia.png" style="width:14px; height:14px; margin-right:6px;">
       <span>AHSJHISAKJ</span>
       <span style="margin-left:auto; width:14px; text-align:center; font-size:10px; color:#666;">×</span>
     </div>
   </div>
 
-  <!-- Content Area (flex:1 pushes status bar down) -->
-  <div style="flex:1; background:white; overflow:auto; position:relative; min-height:0;">
-    <div style="padding:20px; font-family:Arial,sans-serif;">
-      <h1>HELP ME PLEASE AGHHHHHH.......</h1>
+  <div style="flex:1; background:white; overflow-y:auto; min-height:0; padding:20px; color:black; font-family: Arial, sans-serif;">
+      <h1 style="margin-top:0;">Projectos activos y sugerencias.</h1>
       <hr>
-      <p>Welcome to zwiebelsaft.net!</p>
-    </div>
+
+          <div style="background-color: lightgrey; width: 300px; border: 15px solid rgb(141, 100, 255); padding: 50px;">
+    <h2>fresadora CNC hecha con aluminio</h2>
+    <img src="https://content.instructables.com/F75/J8Q1/J2AWF5C0/F75J8Q1J2AWF5C0.jpg" 
+         style="height: 200px; 
+                width: 300px; 
+                object-fit: cover; 
+                border: 18px solid rgb(0, 27, 134); ">
+
+                          <div style="background-color: lightgrey; width: 300px; border: 15px solid rgb(141, 100, 255); padding: 50px;">
+    <h2>fresadora CNC hecha con aluminio</h2>
+    <img src="https://content.instructables.com/F75/J8Q1/J2AWF5C0/F75J8Q1J2AWF5C0.jpg" 
+         style="height: 200px; 
+                width: 300px; 
+                object-fit: cover; 
+                border: 18px solid rgb(0, 27, 134); ">
+
+          <div style="background-color: lightgrey; width: 300px; border: 15px solid rgb(141, 100, 255); padding: 50px;">
+    <h2>fresadora CNC hecha con aluminio</h2>
+    <img src="https://content.instructables.com/F75/J8Q1/J2AWF5C0/F75J8Q1J2AWF5C0.jpg" 
+         style="height: 200px; 
+                width: 300px; 
+                object-fit: cover; 
+                border: 18px solid rgb(0, 27, 134); ">
+          </div>
+      </div>
+
+      <br>
+
+  <details class="i love Mackenzie, emo fyne shit">
+    <summary title="CLICK TO SEE NUN"><b>&#8595;&#8595; añade proyectos que deseas hacer &#8595;&#8595;</b></summary>
+     <div style="padding: 10px;">
+    <form action="https://formspree.io/f/mgodagzq" method="POST">
+<label>Tu email escolar:</label><br>
+<input type="email" name="email">
+<br>
+ <label>tu mensaje y el link de la imagen:</label><br>
+<textarea name="message"></textarea>
+        <button type="submit">Send</button>
+    </form>
+    <br>
+    <h5>Como hago que mi imagen sea un link?</h5>
+    <small>-paginas como 
+    <a href="https://imgbb.com/" target="_blank" title="pagina para convertir imagenes en link">imgbb</a>, 
+    <a href="https://postimages.org/" target="_blank" title="otra pagina para convertir imagenes en link">postimages</a> 
+    y 
+    <a href="https://freeimage.host/" target="_blank" title="otra otra pagina para convertir imagenes en link">freeimage</a> transforman imagenes con formato JPG, PNG, GIF, BMP, TIFF, WebP, HEIC y APNG en un link texto que se pueden incrustar en html, link directo, BBcode (que no se usa mucho) y miniatura.
+    </small>
+</div>  
+</details>
   </div>
 
-  <!-- Status Bar (sticks to bottom because content above has flex:1) -->
   <div style="height:22px; background:linear-gradient(to bottom,#f0f0f0,#e0e0e0); border-top:1px solid #b0b0b0; display:flex; align-items:center; padding:0 6px; font-size:11px; color:#333; flex-shrink:0;">
-    <div style="flex:1;"></div>
+    <div style="flex:1;">Done</div>
     <div style="display:flex; gap:12px;">
-      <span>Internet | wow awesome: On</span>
+      <span>Internet | wow hostias: activao chaval</span>
       <span>100%</span>
-      <span>♪</span>
     </div>
   </div>
 
@@ -889,7 +931,7 @@ $(document).ready(function() {
   $('#ie-icon').on('click', function() {
     openWindow('Internet Explorer', ieHtml);
     const $kitty = $("#kitty-overlay");
-    // spin duration:
+
     $kitty.css("animation-duration", "10s").show().addClass("spin-animation");
     setTimeout(() => {
       $kitty.hide().removeClass("spin-animation");
