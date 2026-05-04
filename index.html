@@ -615,7 +615,7 @@
 </head>
 <body>
 
-<img id="kitty-overlay" src="https://i.ibb.co/5XWHxs2C/CUTEKITTY.jpg" alt="Spinning Kitty">
+<img id="kitty-overlay" src="https://i.ibb.co/DDNwyGLy/i-m-pooping-cat-meme.gif" alt="Spinning CAT ">
 
 <div class="container">
   <div class="screen">
@@ -831,7 +831,7 @@ const ieHtml = `
 
   <!-- Status Bar (sticks to bottom because content above has flex:1) -->
   <div style="height:22px; background:linear-gradient(to bottom,#f0f0f0,#e0e0e0); border-top:1px solid #b0b0b0; display:flex; align-items:center; padding:0 6px; font-size:11px; color:#333; flex-shrink:0;">
-    <div style="flex:1;">Done</div>
+    <div style="flex:1;"></div>
     <div style="display:flex; gap:12px;">
       <span>Internet | wow awesome: On</span>
       <span>100%</span>
@@ -889,7 +889,8 @@ $(document).ready(function() {
   $('#ie-icon').on('click', function() {
     openWindow('Internet Explorer', ieHtml);
     const $kitty = $("#kitty-overlay");
-    $kitty.css("animation-duration", "3s").show().addClass("spin-animation");
+    // spin duration:
+    $kitty.css("animation-duration", "10s").show().addClass("spin-animation");
     setTimeout(() => {
       $kitty.hide().removeClass("spin-animation");
     }, 3000);
